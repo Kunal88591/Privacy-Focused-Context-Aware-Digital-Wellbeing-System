@@ -1,0 +1,25 @@
+# AI/ML Model Dependencies
+
+# Core ML Libraries
+tensorflow==2.14.0
+tensorflow-lite==2.14.0
+scikit-learn==1.4.0
+numpy==1.26.3
+pandas==2.1.4
+
+# NLP
+nltk==3.8.1
+
+# Model Optimization
+tensorflow-model-optimization==0.7.5
+
+# Utilities
+python-dotenv==1.0.0
+joblib==1.3.2
+
+# Visualization (for training analysis)
+matplotlib==3.8.2
+seaborn==0.13.1
+
+# Testing
+pytest==7.4.4

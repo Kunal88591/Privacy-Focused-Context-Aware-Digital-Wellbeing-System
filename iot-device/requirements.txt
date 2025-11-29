@@ -1,0 +1,31 @@
+# IoT Device Dependencies (Raspberry Pi)
+
+# MQTT Communication
+paho-mqtt==1.6.1
+
+# Sensor Libraries
+RPi.GPIO==0.7.1
+adafruit-circuitpython-dht==3.7.9
+board==1.0
+busio==5.2.3
+
+# Audio Processing (for noise detection)
+pyaudio==0.2.14
+numpy==1.26.3
+
+# Environmental Sensors
+# For light sensor (TSL2561/BH1750)
+smbus2==0.4.3
+
+# Motion Detection (PIR sensor via GPIO)
+gpiozero==2.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+
+# Logging
+python-json-logger==2.0.7
+
+# Testing
+pytest==7.4.4
