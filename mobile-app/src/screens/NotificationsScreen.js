@@ -3,7 +3,7 @@
  * Display and manage classified notifications
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -12,8 +12,10 @@ import {
   TouchableOpacity,
   RefreshControl,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { notificationAPI } from '../services/api';
+import { NotificationSkeleton } from '../components/SkeletonLoader';
 
 const NotificationsScreen = () => {
   const [notifications, setNotifications] = useState([]);
@@ -27,12 +29,15 @@ const NotificationsScreen = () => {
 
   const loadNotifications = async () => {
     try {
-      setLoading(true);
       const response = await notificationAPI.getAll(50, 0, filter);
       setNotifications(response.notifications);
     } catch (error) {
       console.error('Error loading notifications:', error);
-      Alert.alert('Error', 'Failed to load notifications');
+      Alert.alert(
+        'Connection Error',
+        'Failed to load notifications. Please check your connection.',
+        [{ text: 'Retry', onPress: () => loadNotifications() }, { text: 'OK' }]
+      );
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -125,24 +130,33 @@ const NotificationsScreen = () => {
       </View>
 
       {/* Notifications List */}
-      <FlatList
-        data={notifications}
-        renderItem={renderNotification}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.listContainer}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-        }
-        ListEmptyComponent={
-          <View style={styles.emptyContainer}>
-            <Text style={styles.emptyText}>📭</Text>
-            <Text style={styles.emptyTitle}>No Notifications</Text>
-            <Text style={styles.emptySubtitle}>
-              You're all caught up!
-            </Text>
-          </View>
-        }
-      />
+      {loading && !refreshing ? (
+        <View style={styles.listContainer}>
+          <NotificationSkeleton />
+          <NotificationSkeleton />
+          <NotificationSkeleton />
+          <NotificationSkeleton />
+        </View>
+      ) : (
+        <FlatList
+          data={notifications}
+          renderItem={renderNotification}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.listContainer}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+          }
+          ListEmptyComponent={
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyText}>📭</Text>
+              <Text style={styles.emptyTitle}>No Notifications</Text>
+              <Text style={styles.emptySubtitle}>
+                You're all caught up!
+              </Text>
+            </View>
+          }
+        />
+      )}
     </View>
   );
 };
@@ -264,6 +278,17 @@ const styles = StyleSheet.create({
   },
   emptySubtitle: {
     fontSize: 14,
+    color: '#999',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 60,
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 16,
     color: '#666',
   },
 });

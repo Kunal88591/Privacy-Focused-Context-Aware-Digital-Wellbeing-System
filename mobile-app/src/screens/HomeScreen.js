@@ -3,7 +3,7 @@
  * Dashboard with stats and quick actions
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -11,9 +11,12 @@ import {
   TouchableOpacity,
   ScrollView,
   RefreshControl,
+  ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { wellbeingAPI, privacyAPI } from '../services/api';
 import mqttService from '../services/mqtt';
+import { DashboardSkeleton } from '../components/SkeletonLoader';
 
 const HomeScreen = ({ navigation }) => {
   const [stats, setStats] = useState(null);
@@ -104,12 +107,12 @@ const HomeScreen = ({ navigation }) => {
     }
   };
 
-  const handleRefresh = () => {
+  const handleRefresh = useCallback(() => {
     setRefreshing(true);
     loadData();
-  };
+  }, []);
 
-  const toggleFocusMode = async () => {
+  const toggleFocusMode = useCallback(async () => {
     try {
       if (focusModeActive) {
         await wellbeingAPI.deactivateFocusMode();
@@ -126,14 +129,10 @@ const HomeScreen = ({ navigation }) => {
     } catch (error) {
       console.error('Error toggling focus mode:', error);
     }
-  };
+  }, [focusModeActive]);
 
   if (loading) {
-    return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
-      </View>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (

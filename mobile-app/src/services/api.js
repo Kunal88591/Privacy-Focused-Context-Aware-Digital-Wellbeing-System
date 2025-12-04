@@ -1,11 +1,67 @@
 /**
  * API Service
- * Handles all HTTP requests to the backend
+ * Handles all HTTP requests to the backend with retry logic, error handling, and offline caching
  */
 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_CONFIG } from '../config/api';
+import { setCache, getCache } from '../utils/offlineCache';
+import { getNetworkStatus } from '../utils/networkStatus';
+
+// Retry configuration
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 1000; // 1 second
+
+// Helper function to delay
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Helper function to retry failed requests
+const retryRequest = async (fn, retries = MAX_RETRIES) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries > 0 && isRetryableError(error)) {
+      console.log(`Retrying request... (${MAX_RETRIES - retries + 1}/${MAX_RETRIES})`);
+      await delay(RETRY_DELAY);
+      return retryRequest(fn, retries - 1);
+    }
+    throw error;
+  }
+};
+
+// Check if error is retryable
+const isRetryableError = (error) => {
+  return (
+    !error.response || // Network error
+    error.code === 'ECONNABORTED' || // Timeout
+    error.response.status >= 500 // Server error
+  );
+};
+
+// Create custom error with user-friendly message
+const createUserFriendlyError = (error) => {
+  if (!error.response) {
+    return new Error('Network error. Please check your internet connection.');
+  }
+  
+  switch (error.response.status) {
+    case 400:
+      return new Error('Invalid request. Please check your input.');
+    case 401:
+      return new Error('Authentication required. Please log in again.');
+    case 403:
+      return new Error('Access denied. You don\'t have permission.');
+    case 404:
+      return new Error('Resource not found.');
+    case 500:
+      return new Error('Server error. Please try again later.');
+    case 503:
+      return new Error('Service unavailable. Please try again later.');
+    default:
+      return new Error(error.response.data?.message || 'An error occurred. Please try again.');
+  }
+};
 
 // Create axios instance
 const api = axios.create({
@@ -37,36 +93,77 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       // Token expired, try to refresh
       await AsyncStorage.removeItem('access_token');
-      // TODO: Redirect to login
+      // TODO: Redirect to login or dispatch logout action
     }
-    return Promise.reject(error);
+    
+    // Transform error to user-friendly message
+    const friendlyError = createUserFriendlyError(error);
+    return Promise.reject(friendlyError);
   }
 );
+
+// Helper function to make cacheable GET requests
+const cacheableGet = async (url, cacheKey, params = {}, expiryMs) => {
+  const networkStatus = await getNetworkStatus();
+  
+  // Try cache first if offline
+  if (!networkStatus.isOnline) {
+    const cached = await getCache(cacheKey);
+    if (cached) {
+      console.log(`Using cached data for ${cacheKey} (offline)`);
+      return { ...cached, fromCache: true, offline: true };
+    }
+    throw new Error('No internet connection and no cached data available.');
+  }
+  
+  // Try network request
+  try {
+    const response = await retryRequest(async () => {
+      return await api.get(url, { params });
+    });
+    
+    // Cache successful response
+    await setCache(cacheKey, response.data);
+    return { ...response.data, fromCache: false, offline: false };
+  } catch (error) {
+    // Fallback to cache on network error
+    const cached = await getCache(cacheKey, expiryMs || 24 * 60 * 60 * 1000); // 24h fallback
+    if (cached) {
+      console.log(`Using cached data for ${cacheKey} (network error)`);
+      return { ...cached, fromCache: true, offline: false };
+    }
+    throw error;
+  }
+};
 
 // Authentication API
 export const authAPI = {
   register: async (username, email, password) => {
-    const response = await api.post('/api/v1/auth/register', {
-      username,
-      email,
-      password,
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/auth/register', {
+        username,
+        email,
+        password,
+      });
+      return response.data;
     });
-    return response.data;
   },
 
   login: async (email, password) => {
-    const response = await api.post('/api/v1/auth/login', {
-      email,
-      password,
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/auth/login', {
+        email,
+        password,
+      });
+      
+      // Save token
+      if (response.data.access_token) {
+        await AsyncStorage.setItem('access_token', response.data.access_token);
+        await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
+      }
+      
+      return response.data;
     });
-    
-    // Save token
-    if (response.data.access_token) {
-      await AsyncStorage.setItem('access_token', response.data.access_token);
-      await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
-    }
-    
-    return response.data;
   },
 
   logout: async () => {
@@ -75,8 +172,10 @@ export const authAPI = {
   },
 
   getCurrentUser: async () => {
-    const response = await api.get('/api/v1/auth/me');
-    return response.data;
+    return retryRequest(async () => {
+      const response = await api.get('/api/v1/auth/me');
+      return response.data;
+    });
   },
 };
 
@@ -92,10 +191,8 @@ export const notificationAPI = {
   },
 
   getAll: async (limit = 50, offset = 0, filter = 'all') => {
-    const response = await api.get('/api/v1/notifications', {
-      params: { limit, offset, filter },
-    });
-    return response.data;
+    const cacheKey = `notifications_${filter}_${limit}_${offset}`;
+    return await cacheableGet('/api/v1/notifications', cacheKey, { limit, offset, filter });
   },
 
   delete: async (id) => {
@@ -131,8 +228,7 @@ export const privacyAPI = {
   },
 
   getStatus: async () => {
-    const response = await api.get('/api/v1/privacy/status');
-    return response.data;
+    return await cacheableGet('/api/v1/privacy/status', 'privacy_status');
   },
 };
 
@@ -155,15 +251,11 @@ export const wellbeingAPI = {
   },
 
   getFocusStatus: async () => {
-    const response = await api.get('/api/v1/wellbeing/focus-mode/status');
-    return response.data;
+    return await cacheableGet('/api/v1/wellbeing/focus-mode/status', 'focus_status');
   },
 
   getStats: async (period = 'today') => {
-    const response = await api.get('/api/v1/wellbeing/stats', {
-      params: { period },
-    });
-    return response.data;
+    return await cacheableGet('/api/v1/wellbeing/stats', `stats_${period}`, { period });
   },
 
   getInsights: async () => {

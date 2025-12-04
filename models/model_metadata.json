@@ -1,0 +1,9 @@
+{
+  "model_type": "RandomForestClassifier",
+  "features": 100,
+  "classes": [
+    "non-urgent",
+    "urgent"
+  ],
+  "version": "0.1.0"
+}

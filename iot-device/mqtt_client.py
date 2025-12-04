@@ -10,6 +10,7 @@ import logging
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+from sensors.sensor_manager import SensorManager
 
 # Load environment variables
 load_dotenv()
@@ -31,6 +32,9 @@ class WellbeingIoTDevice:
         self.broker_port = int(os.getenv('MQTT_BROKER_PORT', 1883))
         self.topic_prefix = os.getenv('MQTT_TOPIC_PREFIX', 'wellbeing')
         self.device_id = os.getenv('DEVICE_ID', 'iot-device-001')
+        
+        # Initialize sensor manager
+        self.sensors = SensorManager()
         
         # Sensor readings
         self.current_state = {
@@ -79,54 +83,19 @@ class WellbeingIoTDevice:
     
     def read_sensors(self):
         """Read all sensor values"""
-        # TODO: Implement actual sensor reading
-        # For now, return mock data
-        
-        self.current_state = {
-            'noise_level': self._read_noise_sensor(),
-            'light_level': self._read_light_sensor(),
-            'motion_detected': self._read_motion_sensor(),
-            'temperature': self._read_temperature_sensor(),
-            'humidity': self._read_humidity_sensor(),
-            'timestamp': datetime.utcnow().isoformat()
-        }
-        
+        self.current_state = self.sensors.read_all()
         return self.current_state
     
-    def _read_noise_sensor(self):
-        """Read noise level from microphone"""
-        # TODO: Implement actual microphone reading using PyAudio
-        # Mock data for now
-        import random
-        return round(random.uniform(30, 80), 2)  # dB
-    
-    def _read_light_sensor(self):
-        """Read ambient light level"""
-        # TODO: Implement TSL2561 or BH1750 light sensor
-        # Mock data for now
-        import random
-        return round(random.uniform(50, 500), 2)  # Lux
-    
-    def _read_motion_sensor(self):
-        """Read PIR motion sensor"""
-        # TODO: Implement GPIO PIR sensor reading
-        # Mock data for now
-        import random
-        return random.choice([True, False])
-    
-    def _read_temperature_sensor(self):
-        """Read temperature from DHT sensor"""
-        # TODO: Implement DHT11/DHT22 sensor reading
-        # Mock data for now
-        import random
-        return round(random.uniform(18, 28), 1)  # Celsius
-    
-    def _read_humidity_sensor(self):
-        """Read humidity from DHT sensor"""
-        # TODO: Implement DHT11/DHT22 sensor reading
-        # Mock data for now
-        import random
-        return round(random.uniform(30, 70), 1)  # Percentage
+    def analyze_environment(self):
+        """Analyze environment and get recommendations"""
+        analysis = self.sensors.analyze_environment()
+        
+        # Send recommendations if any issues detected
+        if analysis['recommendations']:
+            for rec in analysis['recommendations']:
+                self.publish_alert(rec)
+        
+        return analysis
     
     def publish_sensor_data(self):
         """Publish sensor readings to MQTT broker"""
@@ -142,6 +111,20 @@ class WellbeingIoTDevice:
             logger.info(f"📤 Published sensor data: {sensor_data}")
         except Exception as e:
             logger.error(f"Failed to publish sensor data: {e}")
+    
+    def publish_alert(self, alert: dict):
+        """Publish environmental alert"""
+        topic = f"{self.topic_prefix}/alerts/{self.device_id}"
+        
+        try:
+            self.mqtt_client.publish(
+                topic,
+                json.dumps(alert),
+                qos=1
+            )
+            logger.info(f"🚨 Published alert: {alert['message']}")
+        except Exception as e:
+            logger.error(f"Failed to publish alert: {e}")
     
     def connect(self):
         """Connect to MQTT broker"""
@@ -182,6 +165,7 @@ class WellbeingIoTDevice:
                 
         except KeyboardInterrupt:
             logger.info("\n🛑 Shutting down IoT device...")
+            self.sensors.cleanup()
             self.mqtt_client.loop_stop()
             self.mqtt_client.disconnect()
 

@@ -70,13 +70,20 @@ async def health_check():
         }
     }
 
-# API Routes will be imported here
-# from app.api import notifications, privacy, wellbeing, devices
+# Import API routers
+from app.api import auth, notifications, privacy, wellbeing, devices
+
+# Include routers
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["authentication"])
+app.include_router(notifications.router, prefix="/api/v1/notifications", tags=["notifications"])
+app.include_router(privacy.router, prefix="/api/v1/privacy", tags=["privacy"])
+app.include_router(wellbeing.router, prefix="/api/v1/wellbeing", tags=["wellbeing"])
+app.include_router(devices.router, prefix="/api/v1/devices", tags=["devices"])
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        "main:app",
+        "app.main:app",
         host="0.0.0.0",
         port=8000,
         reload=True,
