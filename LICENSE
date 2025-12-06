@@ -1,21 +1,73 @@
-MIT License
+Proprietary License Agreement
 
-Copyright (c) 2025 Privacy-Focused Digital Wellbeing System
+Copyright (c) 2024 Kunal Singh (@Kunal88591)
+All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+TERMS AND CONDITIONS
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. COPYRIGHT AND OWNERSHIP
+   This software and all associated documentation, source code, binaries, and 
+   intellectual property (collectively, the "Software") are the exclusive 
+   property of Kunal Singh. All rights, title, and interest in and to the 
+   Software remain with the copyright holder.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. RESTRICTIONS
+   The following actions are STRICTLY PROHIBITED without prior written 
+   permission from the copyright holder:
+
+   a) Copying, reproducing, or duplicating any part of this Software
+   b) Forking, cloning, or creating derivative works
+   c) Redistributing, sublicensing, or transferring this Software
+   d) Modifying, reverse engineering, or decompiling this Software
+   e) Using this Software for commercial purposes
+   f) Removing or altering any copyright notices or this license
+
+3. PERMITTED USE
+   This Software is made available for VIEWING AND REFERENCE PURPOSES ONLY.
+   You may:
+   - View the source code for educational purposes
+   - Read the documentation
+   - Study the implementation and architecture
+
+   You may NOT:
+   - Clone, fork, or download this repository
+   - Use any part of this code in your own projects
+   - Create similar or competing products based on this Software
+
+4. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+5. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+   IN THE SOFTWARE.
+
+6. ENFORCEMENT
+   Violation of this license will result in:
+   - Immediate termination of any usage rights
+   - Legal action for copyright infringement
+   - Claims for damages and legal fees
+
+7. CONTACT FOR LICENSING
+   For licensing inquiries, commercial use, or permissions:
+   Email: 23bec065@iiitdmj.ac.in
+   GitHub: @Kunal88591
+
+8. GOVERNING LAW
+   This license shall be governed by and construed in accordance with the 
+   laws of India, without regard to its conflict of law provisions.
+
+9. ACKNOWLEDGMENT
+   By accessing this Software, you acknowledge that you have read this license,
+   understand it, and agree to be bound by its terms and conditions.
+
+---
+
+NOTICE: This project is a unique, proprietary implementation of a Privacy-Focused
+Context-Aware Digital Wellbeing System. Unauthorized use, reproduction, or 
+distribution is prohibited and will be prosecuted to the fullest extent of the law.
+
+For authorized use or collaboration opportunities, contact the copyright holder.

@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Project Status](https://img.shields.io/badge/status-MVP%20COMPLETE-success)
-![License](https://img.shields.io/badge/license-MIT-blue)
+![License](https://img.shields.io/badge/license-Proprietary-red)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![React Native](https://img.shields.io/badge/react--native-0.73-61dafb)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688)
@@ -1504,22 +1504,37 @@ sudo systemctl start wellbeing-iot
 
 ---
 
-## 🤝 Contributing
+## 📄 License
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+This project is licensed under a **Proprietary License** - see [LICENSE](LICENSE) file for full terms.
 
-**Priority Areas:**
-- 🧠 Improve ML model accuracy
-- 🔒 Enhance privacy features
-- 📱 Mobile UI/UX improvements
-- 🤖 Additional sensor integrations
-- 📚 Documentation improvements
+**⚠️ IMPORTANT COPYRIGHT NOTICE:**
+- This is **proprietary software** owned by Kunal Singh
+- **Copying, forking, or redistribution is PROHIBITED**
+- For licensing inquiries: 23bec065@iiitdmj.ac.in
+- See [COPYRIGHT.md](COPYRIGHT.md) for details
 
 ---
 
-## 📄 License
+## 🔒 Copyright & Usage Rights
 
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
+**© 2024 Kunal Singh. All Rights Reserved.**
+
+This project is made available for **VIEWING AND REFERENCE PURPOSES ONLY**.
+
+**You MAY:**
+- ✅ View the source code for educational purposes
+- ✅ Read the documentation
+- ✅ Study the implementation
+
+**You MAY NOT:**
+- ❌ Fork or clone this repository
+- ❌ Copy any part of this code
+- ❌ Create derivative works
+- ❌ Use in commercial products
+- ❌ Redistribute or sublicense
+
+For authorized use or collaboration, contact: **23bec065@iiitdmj.ac.in**
 
 ---
 
@@ -1528,7 +1543,6 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 - FastAPI for excellent async API framework
 - React Native for cross-platform mobile development
 - Raspberry Pi Foundation for affordable computing
-- OpenAI for ML inspiration
 - Open-source community for libraries and tools
 
 ---
@@ -1536,18 +1550,19 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 ## 📧 Contact & Support
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/Kunal88591/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/issues)
-- **Documentation**: Full docs in `/docs` folder
-- **Email**: Create an issue for support
+- **Email**: 23bec065@iiitdmj.ac.in
+- **Documentation**: See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
 
 ---
 
 ## 🎯 Project Status
 
-**Current Version**: 0.1.0 (Alpha)  
-**Status**: Active Development  
-**Last Updated**: November 29, 2025  
-**License**: MIT  
-**Build Status**: Passing ✅
+**Current Version**: 1.0.0 (Production)  
+**Status**: Complete - Day 7/30  
+**Last Updated**: December 6, 2024  
+**License**: Proprietary (All Rights Reserved)  
+**Build Status**: Passing ✅  
+**Tests**: 65/65 passing
 
 ---
 
