@@ -1509,16 +1509,16 @@ sudo systemctl start wellbeing-iot
 This project is licensed under a **Proprietary License** - see [LICENSE](LICENSE) file for full terms.
 
 **⚠️ IMPORTANT COPYRIGHT NOTICE:**
-- This is **proprietary software** owned by Kunal Singh
+- This is **proprietary software** owned by Kunal Meena
 - **Copying, forking, or redistribution is PROHIBITED**
-- For licensing inquiries: 23bec065@iiitdmj.ac.in
+- For licensing inquiries: kunalmeena1311@gmail.com
 - See [COPYRIGHT.md](COPYRIGHT.md) for details
 
 ---
 
 ## 🔒 Copyright & Usage Rights
 
-**© 2024 Kunal Singh. All Rights Reserved.**
+**© 2024-2025 Kunal Meena. All Rights Reserved.**
 
 This project is made available for **VIEWING AND REFERENCE PURPOSES ONLY**.
 
@@ -1530,11 +1530,12 @@ This project is made available for **VIEWING AND REFERENCE PURPOSES ONLY**.
 **You MAY NOT:**
 - ❌ Fork or clone this repository
 - ❌ Copy any part of this code
+- ❌ Implement similar ideas or concepts
 - ❌ Create derivative works
 - ❌ Use in commercial products
 - ❌ Redistribute or sublicense
 
-For authorized use or collaboration, contact: **23bec065@iiitdmj.ac.in**
+For authorized use or collaboration, contact: **kunalmeena1311@gmail.com**
 
 ---
 
@@ -1550,7 +1551,8 @@ For authorized use or collaboration, contact: **23bec065@iiitdmj.ac.in**
 ## 📧 Contact & Support
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/Kunal88591/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/issues)
-- **Email**: 23bec065@iiitdmj.ac.in
+- **Email**: kunalmeena1311@gmail.com
+- **Owner**: Kunal Meena (@Kunal88591)
 - **Documentation**: See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
 
 ---
