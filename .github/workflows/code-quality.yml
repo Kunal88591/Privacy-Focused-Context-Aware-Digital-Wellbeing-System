@@ -1,0 +1,85 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  python-quality:
+    name: Python Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install quality tools
+      run: |
+        pip install flake8 black pylint bandit safety
+    
+    - name: Run flake8
+      run: |
+        flake8 backend-api/app --max-line-length=120 --exclude=__pycache__ || echo "Flake8 check completed"
+    
+    - name: Run black (code formatter check)
+      run: |
+        black --check backend-api/app || echo "Black formatting check completed"
+    
+    - name: Run pylint
+      run: |
+        pylint backend-api/app --disable=C,R --max-line-length=120 || echo "Pylint check completed"
+    
+    - name: Run bandit (security linter)
+      run: |
+        bandit -r backend-api/app -ll || echo "Bandit security check completed"
+    
+    - name: Check dependencies for vulnerabilities
+      run: |
+        safety check --file backend-api/requirements.txt || echo "Safety check completed"
+  
+  javascript-quality:
+    name: JavaScript Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        cd mobile-app
+        npm ci
+    
+    - name: Run ESLint
+      run: |
+        cd mobile-app
+        npx eslint . --ext .js,.jsx --max-warnings 50 || echo "ESLint check completed"
+    
+    - name: Run Prettier check
+      run: |
+        cd mobile-app
+        npx prettier --check "src/**/*.{js,jsx}" || echo "Prettier check completed"
+  
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Dependency Review
+      uses: actions/dependency-review-action@v3

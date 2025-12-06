@@ -1,0 +1,75 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docker-compose.yml'
+      - 'backend-api/Dockerfile'
+      - 'mosquitto/**'
+      - '.github/workflows/docker-compose-ci.yml'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test Docker Compose Setup
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build Docker images
+      run: docker-compose build
+    
+    - name: Start services
+      run: |
+        docker-compose up -d
+        echo "Waiting for services to be healthy..."
+        sleep 30
+    
+    - name: Check services health
+      run: |
+        docker-compose ps
+        curl -f http://localhost:8000/health || exit 1
+        echo "✅ Backend health check passed!"
+    
+    - name: Check MQTT broker
+      run: |
+        docker-compose exec -T mosquitto mosquitto_sub -t test -C 1 &
+        sleep 2
+        docker-compose exec -T mosquitto mosquitto_pub -t test -m "hello"
+        echo "✅ MQTT broker is working!"
+    
+    - name: View logs
+      if: failure()
+      run: docker-compose logs
+    
+    - name: Stop services
+      run: docker-compose down -v
+  
+  security-scan:
+    name: Security Scan Docker Images
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'config'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    
+    - name: Upload Trivy results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+      if: always()

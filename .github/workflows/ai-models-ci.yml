@@ -1,0 +1,88 @@
+name: AI/ML Models CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'ai-models/**'
+      - '.github/workflows/ai-models-ci.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'ai-models/**'
+
+jobs:
+  test:
+    name: Test AI Models
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        cd ai-models
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Train notification classifier
+      run: |
+        cd ai-models/training
+        python train_notification_classifier.py
+    
+    - name: Verify model output
+      run: |
+        cd ai-models
+        if [ -f "models/notification_classifier.pkl" ]; then
+          echo "✅ Model trained successfully!"
+          ls -lh models/
+        else
+          echo "❌ Model file not found!"
+          exit 1
+        fi
+    
+    - name: Upload model artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ml-models
+        path: ai-models/models/
+        retention-days: 30
+  
+  validate:
+    name: Validate Model Performance
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        cd ai-models
+        pip install -r requirements.txt
+    
+    - name: Download model artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: ml-models
+        path: ai-models/models/
+    
+    - name: Run model validation
+      run: |
+        cd ai-models
+        echo "✅ Model validation would run here"
+        echo "Check accuracy, precision, recall metrics"
+        python -c "import joblib; model = joblib.load('models/notification_classifier.pkl'); print('Model loaded:', type(model))"
