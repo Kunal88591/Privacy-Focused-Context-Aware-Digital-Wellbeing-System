@@ -60,7 +60,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd mobile-app
-        npm install || echo "Dependencies installation attempted"
+        npm install --legacy-peer-deps || echo "Dependencies installation attempted"
       continue-on-error: true
     
     - name: Run ESLint

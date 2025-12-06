@@ -24,10 +24,10 @@ jobs:
       uses: docker/setup-buildx-action@v2
     
     - name: Validate Docker Compose file
-      run: docker-compose config
+      run: docker compose config
     
     - name: Build Docker images
-      run: docker-compose build || echo "Docker build attempted"
+      run: docker compose build || echo "Docker build attempted"
       continue-on-error: true
     
     - name: Check Dockerfile syntax
