@@ -2,14 +2,21 @@
  * Mobile App Configuration
  */
 
+// Environment detection
+const __DEV__ = typeof __DEV__ !== 'undefined' ? __DEV__ : false;
+
 export const API_CONFIG = {
-  BASE_URL: 'http://localhost:8000',
+  BASE_URL: __DEV__ 
+    ? 'http://localhost:8000'  // Local development
+    : (process.env.EXPO_PUBLIC_API_URL || 'https://your-api-domain.com'), // Production
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
 };
 
 export const MQTT_CONFIG = {
-  BROKER_URL: 'mqtt://localhost:1883',
+  BROKER_URL: __DEV__
+    ? 'mqtt://localhost:1883'  // Local development
+    : (process.env.EXPO_PUBLIC_MQTT_URL || 'mqtt://your-mqtt-domain.com:1883'), // Production
   CLIENT_ID: 'mobile-app-',
   RECONNECT_PERIOD: 5000,
 };

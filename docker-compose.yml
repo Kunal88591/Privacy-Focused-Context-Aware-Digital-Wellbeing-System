@@ -1,0 +1,40 @@
+# Docker Compose Configuration
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend-api
+    container_name: wellbeing-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - MQTT_BROKER=mosquitto
+      - MQTT_PORT=1883
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+    networks:
+      - wellbeing-network
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: wellbeing-mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+    networks:
+      - wellbeing-network
+
+networks:
+  wellbeing-network:
+    driver: bridge
+
+volumes:
+  mosquitto_data:
+  mosquitto_log:
