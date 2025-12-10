@@ -71,7 +71,7 @@ async def health_check():
     }
 
 # Import API routers
-from app.api import auth, notifications, privacy, wellbeing, devices
+from app.api import auth, notifications, privacy, wellbeing, devices, ai_advanced
 
 # Include routers
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["authentication"])
@@ -79,6 +79,7 @@ app.include_router(notifications.router, prefix="/api/v1/notifications", tags=["
 app.include_router(privacy.router, prefix="/api/v1/privacy", tags=["privacy"])
 app.include_router(wellbeing.router, prefix="/api/v1/wellbeing", tags=["wellbeing"])
 app.include_router(devices.router, prefix="/api/v1/devices", tags=["devices"])
+app.include_router(ai_advanced.router, tags=["Advanced AI"])
 
 if __name__ == "__main__":
     import uvicorn

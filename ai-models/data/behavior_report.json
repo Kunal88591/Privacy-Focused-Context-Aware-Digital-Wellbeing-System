@@ -1,0 +1,91 @@
+{
+  "generated_at": "2025-12-10T16:21:01.339944",
+  "productivity_insights": {
+    "productivity_score": 74.4,
+    "focus_insights": {
+      "total_sessions": 5,
+      "total_focus_time": 168.0,
+      "avg_session_duration": 33.6,
+      "avg_quality_score": 74.4,
+      "best_hours": [],
+      "best_days": [
+        {
+          "day": "Wednesday",
+          "avg_quality": 74.4
+        }
+      ],
+      "focus_trend": "declining"
+    },
+    "distraction_insights": {
+      "total_distractions": 15,
+      "avg_severity": 3.0,
+      "top_sources": [
+        {
+          "source": "Email",
+          "count": 8
+        },
+        {
+          "source": "News Apps",
+          "count": 3
+        },
+        {
+          "source": "Messages",
+          "count": 2
+        },
+        {
+          "source": "Social Media",
+          "count": 2
+        }
+      ],
+      "worst_hours": [
+        {
+          "hour": 1,
+          "count": 4
+        },
+        {
+          "hour": 8,
+          "count": 2
+        },
+        {
+          "hour": 17,
+          "count": 2
+        }
+      ]
+    },
+    "notification_insights": {
+      "total_notifications": 20,
+      "handle_rate": 0.75,
+      "avg_priority": 59.25,
+      "top_apps": {
+        "Email": 8,
+        "Slack": 6,
+        "Twitter": 2,
+        "Instagram": 2,
+        "WhatsApp": 2
+      },
+      "peak_hours": {
+        "12": 3,
+        "16": 3,
+        "0": 2
+      }
+    },
+    "recommendations": [
+      {
+        "category": "focus",
+        "priority": "medium",
+        "text": "Your focus quality is declining. Try shorter, more frequent sessions."
+      },
+      {
+        "category": "distraction",
+        "priority": "medium",
+        "text": "'Email' is your main distraction. Consider blocking it during focus time."
+      }
+    ]
+  },
+  "raw_data_summary": {
+    "focus_sessions_count": 5,
+    "distractions_count": 15,
+    "notifications_count": 20,
+    "apps_tracked": 0
+  }
+}
