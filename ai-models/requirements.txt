@@ -2,7 +2,6 @@
 
 # Core ML Libraries
 tensorflow==2.14.0
-tensorflow-lite==2.14.0
 scikit-learn==1.4.0
 numpy==1.26.3
 pandas==2.1.4
