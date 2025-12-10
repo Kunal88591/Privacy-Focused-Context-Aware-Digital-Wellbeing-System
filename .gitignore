@@ -22,6 +22,9 @@ wheels/
 venv/
 env/
 ENV/
+.pytest_cache/
+*.pyc
+*.pyo
 
 # Node
 node_modules/
