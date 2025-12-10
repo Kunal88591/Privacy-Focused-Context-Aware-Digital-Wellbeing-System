@@ -11,6 +11,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import PrivacyScreen from '../screens/PrivacyScreen';
+import AnalyticsScreen from '../screens/AnalyticsScreen';
+import GoalsScreen from '../screens/GoalsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
@@ -55,6 +57,22 @@ const AppNavigator = () => {
           options={{
             tabBarLabel: 'Privacy',
             tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🔒</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="Analytics"
+          component={AnalyticsScreen}
+          options={{
+            tabBarLabel: 'Analytics',
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>📊</Text>,
+          }}
+        />
+        <Tab.Screen
+          name="Goals"
+          component={GoalsScreen}
+          options={{
+            tabBarLabel: 'Goals',
+            tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🎯</Text>,
           }}
         />
         <Tab.Screen
