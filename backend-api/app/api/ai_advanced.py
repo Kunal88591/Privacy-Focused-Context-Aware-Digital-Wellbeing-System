@@ -10,8 +10,11 @@ from datetime import datetime
 import sys
 import os
 
-# Add ai-models path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../ai-models')))
+# Add ai-models path - use absolute path from project root
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../'))
+ai_models_path = os.path.join(project_root, 'ai-models')
+if ai_models_path not in sys.path:
+    sys.path.insert(0, ai_models_path)
 
 from training.train_priority_model import NotificationPriorityScorer
 from training.train_focus_predictor import FocusTimePredictor
