@@ -1,0 +1,18 @@
+{
+  "model_type": "TensorFlow Lite",
+  "source": "sklearn RandomForest",
+  "input_shape": [
+    1,
+    100
+  ],
+  "output_shape": [
+    1,
+    2
+  ],
+  "classes": [
+    "non-urgent",
+    "urgent"
+  ],
+  "version": "1.0.0",
+  "quantized": true
+}
