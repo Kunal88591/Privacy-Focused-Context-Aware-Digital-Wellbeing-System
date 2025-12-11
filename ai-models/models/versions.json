@@ -1,0 +1,19 @@
+{
+  "current_version": "0.1.0",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "registered_at": "2025-12-11T10:54:49.201346",
+      "metadata": {
+        "model_type": "RandomForestClassifier",
+        "features": 100,
+        "classes": [
+          "non-urgent",
+          "urgent"
+        ],
+        "version": "0.1.0"
+      },
+      "status": "active"
+    }
+  ]
+}
