@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
         android:protectionLevel="signature" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
     <application
       android:name=".MainApplication"
@@ -43,6 +45,9 @@
 
       <!-- Headless JS Service -->
       <service
+        android:name=".NotificationEventService"
+        android:exported="false" />
+
       <!-- Focus Mode Service -->
       <service
         android:name=".FocusModeService"
@@ -57,8 +62,15 @@
         android:excludeFromRecents="true"
         android:exported="false" />
 
-        android:name=".NotificationEventService"
-        android:exported="false" />
+      <!-- Privacy VPN Service -->
+      <service
+        android:name=".PrivacyVpnService"
+        android:permission="android.permission.BIND_VPN_SERVICE"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="android.net.VpnService" />
+        </intent-filter>
+      </service>
 
     </application>
 

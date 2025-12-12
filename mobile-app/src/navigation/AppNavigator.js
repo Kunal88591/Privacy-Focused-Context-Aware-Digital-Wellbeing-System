@@ -14,6 +14,7 @@ import HomeScreen from '../screens/HomeScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import FocusModeScreen from '../screens/FocusModeScreen';
 import PrivacyScreen from '../screens/PrivacyScreen';
+import PrivacyDashboardScreen from '../screens/PrivacyDashboardScreen';
 import AnalyticsScreen from '../screens/AnalyticsScreen';
 import GoalsScreen from '../screens/GoalsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -81,10 +82,10 @@ const MainTabNavigator = () => {
       />
       <Tab.Screen
         name="Privacy"
-        component={PrivacyScreen}
+        component={PrivacyDashboardScreen}
         options={{
           tabBarLabel: 'Privacy',
-          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🔒</Text>,
+          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🛡️</Text>,
         }}
       />
       <Tab.Screen
