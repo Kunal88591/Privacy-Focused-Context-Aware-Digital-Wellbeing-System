@@ -9,17 +9,20 @@ import AppNavigator from './src/navigation/AppNavigator';
 import ErrorBoundary from './src/components/ErrorBoundary';
 import OfflineIndicator from './src/components/OfflineIndicator';
 import { AppProvider } from './src/context/AppContext';
+import { AuthProvider } from './src/contexts/AuthContext';
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <AppProvider>
-        <View style={{ flex: 1 }}>
-          <StatusBar barStyle="dark-content" backgroundColor="white" />
-          <OfflineIndicator />
-          <AppNavigator />
-        </View>
-      </AppProvider>
+      <AuthProvider>
+        <AppProvider>
+          <View style={{ flex: 1 }}>
+            <StatusBar barStyle="dark-content" backgroundColor="white" />
+            <OfflineIndicator />
+            <AppNavigator />
+          </View>
+        </AppProvider>
+      </AuthProvider>
     </ErrorBoundary>
   );
 };

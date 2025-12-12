@@ -289,4 +289,194 @@ export const devicesAPI = {
   },
 };
 
+// AI Advanced API
+export const aiAPI = {
+  scorePriority: async (text, appName, timestamp) => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/ai/priority/score', {
+        text,
+        app_name: appName,
+        timestamp: timestamp || new Date().toISOString(),
+      });
+      return response.data;
+    });
+  },
+
+  predictFocus: async (params = {}) => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/ai/focus/predict', params);
+      return response.data;
+    });
+  },
+
+  getDailyFocusSchedule: async (date) => {
+    return await cacheableGet(
+      '/api/v1/ai/focus/schedule',
+      `focus_schedule_${date}`,
+      { date: date || new Date().toISOString().split('T')[0] }
+    );
+  },
+
+  getSuggestions: async (params = {}) => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/ai/suggestions', params);
+      return response.data;
+    });
+  },
+
+  analyzeBehavior: async (userId, days = 7) => {
+    return await cacheableGet(
+      '/api/v1/ai/behavior/analyze',
+      `behavior_${userId}_${days}`,
+      { user_id: userId, days }
+    );
+  },
+
+  detectPatterns: async (userId) => {
+    return await cacheableGet(
+      '/api/v1/ai/behavior/patterns',
+      `patterns_${userId}`,
+      { user_id: userId }
+    );
+  },
+
+  getInsights: async (userId) => {
+    return await cacheableGet(
+      '/api/v1/ai/behavior/insights',
+      `insights_${userId}`,
+      { user_id: userId }
+    );
+  },
+};
+
+// Analytics API
+export const analyticsAPI = {
+  trackSession: async (userId, startTime, endTime, deviceType = 'mobile') => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/analytics/sessions/track', {
+        user_id: userId,
+        start_time: startTime,
+        end_time: endTime,
+        device_type: deviceType,
+      });
+      return response.data;
+    });
+  },
+
+  trackScreenTime: async (userId, appName, durationMinutes, category = 'other') => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/analytics/screen-time/track', {
+        user_id: userId,
+        app_name: appName,
+        duration_minutes: durationMinutes,
+        category,
+        timestamp: new Date().toISOString(),
+      });
+      return response.data;
+    });
+  },
+
+  trackFocusSession: async (userId, startTime, endTime, qualityScore, taskName) => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/analytics/focus/track', {
+        user_id: userId,
+        start_time: startTime,
+        end_time: endTime,
+        quality_score: qualityScore,
+        task_name: taskName,
+      });
+      return response.data;
+    });
+  },
+
+  trackNotification: async (userId, appName, priority, wasInteracted) => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/analytics/notifications/track', {
+        user_id: userId,
+        app_name: appName,
+        priority,
+        was_interacted: wasInteracted,
+        timestamp: new Date().toISOString(),
+      });
+      return response.data;
+    });
+  },
+
+  getSessionStats: async (userId, period = 'week') => {
+    return await cacheableGet(
+      '/api/v1/analytics/sessions/stats',
+      `session_stats_${userId}_${period}`,
+      { user_id: userId, period }
+    );
+  },
+
+  getScreenTimeStats: async (userId, period = 'week') => {
+    return await cacheableGet(
+      '/api/v1/analytics/screen-time/stats',
+      `screen_time_${userId}_${period}`,
+      { user_id: userId, period }
+    );
+  },
+
+  getFocusStats: async (userId, period = 'week') => {
+    return await cacheableGet(
+      '/api/v1/analytics/focus/stats',
+      `focus_stats_${userId}_${period}`,
+      { user_id: userId, period }
+    );
+  },
+
+  getProductivityScore: async (userId, period = 'today') => {
+    return await cacheableGet(
+      '/api/v1/analytics/productivity/score',
+      `productivity_${userId}_${period}`,
+      { user_id: userId, period }
+    );
+  },
+
+  getWellbeingScore: async (userId) => {
+    return await cacheableGet(
+      '/api/v1/analytics/wellbeing/score',
+      `wellbeing_${userId}`,
+      { user_id: userId }
+    );
+  },
+
+  getDashboard: async (userId, period = 'week') => {
+    return await cacheableGet(
+      '/api/v1/analytics/dashboard',
+      `dashboard_${userId}_${period}`,
+      { user_id: userId, period }
+    );
+  },
+
+  getTrends: async (userId, metric = 'productivity', days = 30) => {
+    return await cacheableGet(
+      '/api/v1/analytics/trends',
+      `trends_${userId}_${metric}_${days}`,
+      { user_id: userId, metric, days }
+    );
+  },
+
+  getGoals: async (userId) => {
+    return await cacheableGet(
+      '/api/v1/analytics/goals',
+      `goals_${userId}`,
+      { user_id: userId }
+    );
+  },
+
+  setGoal: async (userId, goalType, targetValue, timeframe) => {
+    return retryRequest(async () => {
+      const response = await api.post('/api/v1/analytics/goals', {
+        user_id: userId,
+        goal_type: goalType,
+        target_value: targetValue,
+        timeframe,
+      });
+      return response.data;
+    });
+  },
+};
+
 export default api;
