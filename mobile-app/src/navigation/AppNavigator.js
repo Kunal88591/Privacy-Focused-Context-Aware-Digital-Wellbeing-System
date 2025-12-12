@@ -15,6 +15,7 @@ import NotificationsScreen from '../screens/NotificationsScreen';
 import FocusModeScreen from '../screens/FocusModeScreen';
 import PrivacyScreen from '../screens/PrivacyScreen';
 import PrivacyDashboardScreen from '../screens/PrivacyDashboardScreen';
+import RecommendationsScreen from '../screens/RecommendationsScreen';
 import AnalyticsScreen from '../screens/AnalyticsScreen';
 import GoalsScreen from '../screens/GoalsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -78,6 +79,14 @@ const MainTabNavigator = () => {
         options={{
           tabBarLabel: 'Focus',
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🎯</Text>,
+        }}
+      />
+      <Tab.Screen
+        name="Recommendations"
+        component={RecommendationsScreen}
+        options={{
+          tabBarLabel: 'Tips',
+          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>💡</Text>,
         }}
       />
       <Tab.Screen
