@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" 
         android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
       android:name=".MainApplication"
@@ -40,6 +43,20 @@
 
       <!-- Headless JS Service -->
       <service
+      <!-- Focus Mode Service -->
+      <service
+        android:name=".FocusModeService"
+        android:exported="false"
+        android:enabled="true" />
+
+      <!-- Blocking Overlay Activity -->
+      <activity
+        android:name=".BlockingOverlayActivity"
+        android:label="Focus Mode Active"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+        android:excludeFromRecents="true"
+        android:exported="false" />
+
         android:name=".NotificationEventService"
         android:exported="false" />
 

@@ -23,6 +23,7 @@ public class NotificationPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new NotificationModule(reactContext));
+        modules.add(new FocusModeModule(reactContext));
         return modules;
     }
 }

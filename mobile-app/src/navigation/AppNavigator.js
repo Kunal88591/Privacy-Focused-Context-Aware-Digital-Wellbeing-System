@@ -12,6 +12,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 import HomeScreen from '../screens/HomeScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
+import FocusModeScreen from '../screens/FocusModeScreen';
 import PrivacyScreen from '../screens/PrivacyScreen';
 import AnalyticsScreen from '../screens/AnalyticsScreen';
 import GoalsScreen from '../screens/GoalsScreen';
@@ -71,19 +72,19 @@ const MainTabNavigator = () => {
         }}
       />
       <Tab.Screen
+        name="FocusMode"
+        component={FocusModeScreen}
+        options={{
+          tabBarLabel: 'Focus',
+          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🎯</Text>,
+        }}
+      />
+      <Tab.Screen
         name="Privacy"
         component={PrivacyScreen}
         options={{
           tabBarLabel: 'Privacy',
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>🔒</Text>,
-        }}
-      />
-      <Tab.Screen
-        name="Analytics"
-        component={AnalyticsScreen}
-        options={{
-          tabBarLabel: 'Analytics',
-          tabBarIcon: ({ color }) => <Text style={{ fontSize: 24 }}>📊</Text>,
         }}
       />
       <Tab.Screen
