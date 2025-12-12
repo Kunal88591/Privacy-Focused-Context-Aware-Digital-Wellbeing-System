@@ -7,10 +7,10 @@
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![React Native](https://img.shields.io/badge/react--native-0.73-61dafb)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688)
-![Progress](https://img.shields.io/badge/day-16%2F30-orange)
+![Progress](https://img.shields.io/badge/day-17%2F30-orange)
 ![Docker](https://img.shields.io/badge/docker-ready-2496ED)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-automated-success)
-![Tests](https://img.shields.io/badge/tests-290%20passing-success)
+![Tests](https://img.shields.io/badge/tests-345%20passing-success)
 
 **Your Digital Bodyguard & Focus Coach**
 
@@ -20,7 +20,7 @@
 
 ---
 
-## API INTEGRATION COMPLETE! Authentication, JWT tokens, Login/Register screens, API service layer - 48/48 tests passing! [See Day 16 Progress](docs/DAY_16_PROGRESS.md)
+## NOTIFICATION SYSTEM LIVE! Android listener, swipe-to-dismiss, classification, real-time updates - 55/55 tests passing! [See Day 17 Progress](docs/DAY_17_PROGRESS.md)
 
 </div>
 
@@ -45,7 +45,7 @@
 
 ## 🚀 Current Progress
 
-**Day 16 of 30** - API Integration Complete
+**Day 17 of 30** - Notification System Complete
 
 | Component | Status | Progress | Tests |
 |-----------|--------|----------|-------|
@@ -711,13 +711,13 @@ cd mobile-app
 - [x] **Deliverable**: App-Backend communication
 - [ ] **Deliverable**: App-Backend communication
 
-**Day 17** (8 hours) - Notification System
-- [ ] Implement notification interceptor (Android)
-- [ ] Extract notification text, sender, time
-- [ ] Call classification API
-- [ ] Display notifications in list view
-- [ ] Add swipe-to-dismiss functionality
-- [ ] **Deliverable**: Notification management
+**Day 17** (8 hours) - Notification System ✅ COMPLETED
+- [x] Implement notification interceptor (Android)
+- [x] Extract notification text, sender, time
+- [x] Call classification API
+- [x] Display notifications in list view
+- [x] Add swipe-to-dismiss functionality
+- [x] **Deliverable**: Notification management
 
 **Day 18** (8 hours) - Focus Mode
 - [ ] Create Focus Mode toggle button

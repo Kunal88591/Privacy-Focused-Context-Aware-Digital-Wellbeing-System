@@ -18,6 +18,23 @@ import com.facebook.react.bridge.WritableMap;
 public class NotificationListener extends NotificationListenerService {
 
     private static final String TAG = "NotificationListener";
+    private static NotificationListener instance;
+
+    public static NotificationListener getInstance() {
+        return instance;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        instance = null;
+    }
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
