@@ -251,7 +251,7 @@ class TestScheduledFocusModeAutomation:
         assert result["scheduled_for"] == future_time
         assert result["duration_minutes"] == 60
         assert result["status"] == "scheduled"
-        assert "Enable Do Not Disturb" in result["actions"]
+        assert "Enable Do Not Disturb mode" in result["actions"]
     
     def test_schedule_focus_mode_api(self):
         """Test: Schedule focus mode via API endpoint"""
