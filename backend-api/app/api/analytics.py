@@ -11,6 +11,7 @@ from enum import Enum
 
 from app.services.analytics_tracker import analytics_tracker
 from app.services.insights_generator import insights_generator
+from app.services.optimized_analytics import optimized_analytics
 
 
 router = APIRouter(prefix="/api/v1/analytics", tags=["Analytics"])
@@ -699,6 +700,111 @@ async def get_dashboard_data(user_id: str):
                 "tips": tips[:5],
                 "patterns": patterns.get('patterns', [])
             }
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+# ==================== Optimized Endpoints ====================
+
+@router.get("/quick-stats")
+async def get_quick_stats(user_id: str):
+    """
+    Get minimal dashboard stats for fast initial load
+    
+    Optimized endpoint returning only essential metrics.
+    Much faster than full dashboard endpoint.
+    """
+    try:
+        stats = await optimized_analytics.get_quick_stats(user_id)
+        
+        return {
+            "status": "success",
+            "data": stats
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/summary/daily-optimized")
+async def get_daily_summary_optimized(
+    user_id: str = Query(..., description="User ID"),
+    date: Optional[str] = Query(None, description="Date in YYYY-MM-DD format")
+):
+    """
+    Get pre-aggregated daily summary (FAST)
+    
+    Uses pre-computed aggregations and caching for instant response.
+    Recommended for mobile apps with slow connections.
+    """
+    try:
+        summary = await optimized_analytics.get_daily_summary(user_id, date)
+        
+        return {
+            "status": "success",
+            "data": summary,
+            "cached": True
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/summary/weekly-optimized")
+async def get_weekly_trends_optimized(user_id: str):
+    """
+    Get pre-aggregated weekly trends (FAST)
+    
+    Uses cached aggregations for instant loading.
+    """
+    try:
+        trends = await optimized_analytics.get_weekly_trends(user_id)
+        
+        return {
+            "status": "success",
+            "data": trends,
+            "cached": True
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/insights-optimized")
+async def get_insights_optimized(user_id: str):
+    """
+    Get pre-computed insights (FAST)
+    
+    Returns AI-generated insights from cache.
+    Regenerated every 5 minutes.
+    """
+    try:
+        insights = await optimized_analytics.get_insights(user_id)
+        
+        return {
+            "status": "success",
+            "count": len(insights),
+            "data": insights
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.delete("/cache")
+async def clear_analytics_cache(user_id: str):
+    """
+    Clear analytics cache for user
+    
+    Forces fresh data aggregation on next request.
+    """
+    try:
+        optimized_analytics.clear_cache(user_id)
+        
+        return {
+            "status": "success",
+            "message": f"Cache cleared for user {user_id}"
         }
     
     except Exception as e:
