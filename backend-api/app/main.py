@@ -11,7 +11,11 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 import logging
 from contextlib import asynccontextmanager
-import aioredis
+
+try:
+    import redis.asyncio as aioredis
+except ImportError:
+    aioredis = None
 
 # Configure logging
 logging.basicConfig(
@@ -39,17 +43,20 @@ async def lifespan(app: FastAPI):
     
     # Initialize Redis for caching
     try:
-        redis_client = await aioredis.from_url(
-            "redis://localhost:6379",
-            encoding="utf-8",
-            decode_responses=True
-        )
-        logger.info("✅ Redis cache initialized")
-        
-        # Initialize cache manager
-        from app.core.cache import cache_manager
-        cache_manager.redis_client = redis_client
-        cache_manager.enabled = True
+        if aioredis:
+            redis_client = await aioredis.from_url(
+                "redis://localhost:6379",
+                encoding="utf-8",
+                decode_responses=True
+            )
+            logger.info("✅ Redis cache initialized")
+            
+            # Initialize cache manager
+            from app.core.cache import cache_manager
+            cache_manager.redis_client = redis_client
+            cache_manager.enabled = True
+        else:
+            logger.warning("⚠️ Redis library not available, caching disabled")
         
     except Exception as e:
         logger.warning(f"⚠️ Redis not available, caching disabled: {e}")
@@ -96,7 +103,6 @@ app.add_middleware(
 
 # Health check endpoint
 @app.get("/")
-@limiter.limit("100/minute")
 async def root():
     """Root endpoint - API health check"""
     return {
@@ -106,7 +112,6 @@ async def root():
     }
 
 @app.get("/health")
-@limiter.limit("100/minute")
 async def health_check():
     """Detailed health check endpoint"""
     from app.core.cache import cache_manager
@@ -131,7 +136,6 @@ async def health_check():
     }
 
 @app.get("/metrics")
-@limiter.limit("10/minute")
 async def get_metrics():
     """Get API performance metrics"""
     from app.core.cache import cache_manager
