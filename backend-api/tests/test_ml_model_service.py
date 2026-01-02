@@ -247,7 +247,7 @@ class TestMLModelService:
             # Check value types
             assert isinstance(result['confidence'], float)
             assert 0 <= result['confidence'] <= 1
-            assert result['classification'] in ['urgent', 'non-urgent']
+            assert result['classification'] in ['urgent', 'normal']
             
         except RuntimeError:
             # Model not loaded - skip test
@@ -428,7 +428,7 @@ class TestMLModelServiceIntegration:
                 received_at="2025-12-11T10:00:00Z"
             )
             
-            assert result['classification'] in ['urgent', 'non-urgent']
+            assert result['classification'] in ['urgent', 'normal']
             assert 0 <= result['confidence'] <= 1
             assert result['action'] in ['show_immediately', 'show_with_sound', 'batch', 'silent_notification']
             assert len(result['reasoning']) > 0
@@ -441,7 +441,7 @@ class TestMLModelServiceIntegration:
                 received_at="2025-12-11T10:01:00Z"
             )
             
-            assert result['classification'] in ['urgent', 'non-urgent']
+            assert result['classification'] in ['urgent', 'normal']
             assert 'metadata' in result
             
         except RuntimeError:

@@ -38,7 +38,7 @@ class TestMLClassifyEndpoint:
         assert 'inference_time_ms' in data
         assert 'from_cache' in data
         
-        assert data['classification'] in ['urgent', 'non-urgent']
+        assert data['classification'] in ['urgent', 'normal']
         assert isinstance(data['is_urgent'], bool)
         assert 0 <= data['confidence'] <= 1
     
@@ -57,7 +57,7 @@ class TestMLClassifyEndpoint:
         data = response.json()
         
         assert 'classification' in data
-        assert data['classification'] in ['urgent', 'non-urgent']
+        assert data['classification'] in ['urgent', 'normal']
     
     def test_classify_with_timestamp(self):
         """Test classification with timestamp"""
@@ -118,7 +118,7 @@ class TestMLClassifyEndpoint:
             }
         )
         
-        # Should still process (might classify as non-urgent)
+        # Should still process (might classify as normal)
         assert response.status_code in [200, 422, 500]
 
 

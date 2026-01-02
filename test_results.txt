@@ -1,0 +1,598 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-9.0.1, pluggy-1.6.0 -- /home/codespace/.python/current/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api
+plugins: anyio-4.11.0, cov-7.0.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 275 items
+
+tests/test_analytics.py::test_track_session PASSED                       [  0%]
+tests/test_analytics.py::test_track_screen_time PASSED                   [  0%]
+tests/test_analytics.py::test_track_focus_session PASSED                 [  1%]
+tests/test_analytics.py::test_track_break PASSED                         [  1%]
+tests/test_analytics.py::test_track_notification PASSED                  [  1%]
+tests/test_analytics.py::test_track_distraction PASSED                   [  2%]
+tests/test_analytics.py::test_set_goal PASSED                            [  2%]
+tests/test_analytics.py::test_update_goal PASSED                         [  2%]
+tests/test_analytics.py::test_get_goals PASSED                           [  3%]
+tests/test_analytics.py::test_get_daily_summary PASSED                   [  3%]
+tests/test_analytics.py::test_get_weekly_trends PASSED                   [  4%]
+tests/test_analytics.py::test_get_app_usage PASSED                       [  4%]
+tests/test_analytics.py::test_get_productivity_insights PASSED           [  4%]
+tests/test_analytics.py::test_get_usage_patterns PASSED                  [  5%]
+tests/test_analytics.py::test_get_peak_hours PASSED                      [  5%]
+tests/test_analytics.py::test_get_optimal_schedule PASSED                [  5%]
+tests/test_analytics.py::test_get_personalized_tips PASSED               [  6%]
+tests/test_analytics.py::test_get_wellbeing_score PASSED                 [  6%]
+tests/test_analytics.py::test_get_comparison_report PASSED               [  6%]
+tests/test_analytics.py::test_export_analytics_data PASSED               [  7%]
+tests/test_analytics.py::test_get_dashboard_data PASSED                  [  7%]
+tests/test_analytics.py::test_invalid_date_format PASSED                 [  8%]
+tests/test_analytics.py::test_invalid_quality_score PASSED               [  8%]
+tests/test_analytics.py::test_goal_not_found PASSED                      [  8%]
+tests/test_analytics.py::test_analytics_tracker_productivity_score_calculation PASSED [  9%]
+tests/test_analytics.py::test_analytics_tracker_hourly_breakdown PASSED  [  9%]
+tests/test_analytics.py::test_analytics_tracker_trend_analysis PASSED    [  9%]
+tests/test_analytics.py::test_insights_generator_consistency_calculation PASSED [ 10%]
+tests/test_analytics.py::test_insights_generator_wellbeing_recommendations PASSED [ 10%]
+tests/test_auth.py::test_health_check PASSED                             [ 10%]
+tests/test_auth.py::test_register_user PASSED                            [ 11%]
+tests/test_auth.py::test_login_user PASSED                               [ 11%]
+tests/test_auth.py::test_get_user_profile PASSED                         [ 12%]
+tests/test_auth.py::test_unauthorized_access PASSED                      [ 12%]
+tests/test_devices.py::test_register_device PASSED                       [ 12%]
+tests/test_devices.py::test_get_devices PASSED                           [ 13%]
+tests/test_devices.py::test_post_sensor_data PASSED                      [ 13%]
+tests/test_devices.py::test_get_sensor_data PASSED                       [ 13%]
+tests/test_devices.py::test_delete_device PASSED                         [ 14%]
+tests/test_devices.py::test_device_calibration PASSED                    [ 14%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_create_daily_schedule PASSED [ 14%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_create_weekly_schedule PASSED [ 15%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_manual_dnd_session PASSED [ 15%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_end_manual_dnd PASSED [ 16%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_dnd_exceptions_critical PASSED [ 16%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_dnd_exceptions_favorites PASSED [ 16%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_dnd_blocks_regular_notifications PASSED [ 17%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_update_schedule PASSED [ 17%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_delete_schedule PASSED [ 17%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_smart_suggestions PASSED [ 18%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_multiple_schedules PASSED [ 18%]
+tests/test_dnd_scheduler.py::TestDNDScheduler::test_statistics PASSED    [ 18%]
+tests/test_integration.py::TestNotificationFlow::test_notification_classification_flow FAILED [ 19%]
+tests/test_integration.py::TestNotificationFlow::test_urgent_notification_immediate_display FAILED [ 19%]
+tests/test_integration.py::TestNotificationFlow::test_low_priority_notification_batching FAILED [ 20%]
+tests/test_integration.py::TestFocusModeFlow::test_focus_mode_activation FAILED [ 20%]
+tests/test_integration.py::TestFocusModeFlow::test_focus_mode_app_blocking FAILED [ 20%]
+tests/test_integration.py::TestFocusModeFlow::test_focus_mode_statistics FAILED [ 21%]
+tests/test_integration.py::TestFocusModeFlow::test_focus_mode_deactivation FAILED [ 21%]
+tests/test_integration.py::TestSensorAlertFlow::test_noise_detection_alert FAILED [ 21%]
+tests/test_integration.py::TestSensorAlertFlow::test_poor_lighting_alert FAILED [ 22%]
+tests/test_integration.py::TestSensorAlertFlow::test_prolonged_sitting_detection FAILED [ 22%]
+tests/test_integration.py::TestSensorAlertFlow::test_uncomfortable_temperature_alert FAILED [ 22%]
+tests/test_integration.py::TestPrivacyFlow::test_vpn_activation FAILED   [ 23%]
+tests/test_integration.py::TestPrivacyFlow::test_privacy_score_calculation FAILED [ 23%]
+tests/test_integration.py::TestPrivacyFlow::test_tracker_blocking FAILED [ 24%]
+tests/test_integration.py::TestAnalyticsFlow::test_analytics_dashboard_data FAILED [ 24%]
+tests/test_integration.py::TestAnalyticsFlow::test_productivity_scoring FAILED [ 24%]
+tests/test_integration.py::TestRecommendationsFlow::test_personalized_recommendations FAILED [ 25%]
+tests/test_integration.py::TestRecommendationsFlow::test_recommendation_feedback FAILED [ 25%]
+tests/test_integration.py::TestSystemHealth::test_backend_health FAILED  [ 25%]
+tests/test_integration.py::TestSystemHealth::test_all_services_running FAILED [ 26%]
+tests/test_integration.py::TestPerformance::test_api_response_time ERROR [ 26%]
+tests/test_integration.py::TestPerformance::test_ml_inference_time ERROR [ 26%]
+tests/test_iot_automation.py::TestNoiseDetectionAutomation::test_high_noise_triggers_automation PASSED [ 27%]
+tests/test_iot_automation.py::TestNoiseDetectionAutomation::test_normal_noise_no_automation PASSED [ 27%]
+tests/test_iot_automation.py::TestNoiseDetectionAutomation::test_critical_noise_high_severity PASSED [ 28%]
+tests/test_iot_automation.py::TestLightingAdjustmentAutomation::test_low_light_triggers_automation PASSED [ 28%]
+tests/test_iot_automation.py::TestLightingAdjustmentAutomation::test_excessive_light_triggers_automation PASSED [ 28%]
+tests/test_iot_automation.py::TestLightingAdjustmentAutomation::test_optimal_lighting_no_automation PASSED [ 29%]
+tests/test_iot_automation.py::TestBreakReminderAutomation::test_prolonged_sitting_triggers_break_reminder PASSED [ 29%]
+tests/test_iot_automation.py::TestBreakReminderAutomation::test_motion_detected_no_break_reminder PASSED [ 29%]
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_schedule_focus_mode PASSED [ 30%]
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_schedule_focus_mode_api PASSED [ 30%]
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_activate_focus_mode_immediately PASSED [ 30%]
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_activate_focus_mode_api PASSED [ 31%]
+tests/test_iot_automation.py::TestTemperatureAutomation::test_low_temperature_triggers_alert PASSED [ 31%]
+tests/test_iot_automation.py::TestTemperatureAutomation::test_high_temperature_triggers_alert PASSED [ 32%]
+tests/test_iot_automation.py::TestThresholdConfiguration::test_get_current_thresholds PASSED [ 32%]
+tests/test_iot_automation.py::TestThresholdConfiguration::test_update_thresholds PASSED [ 32%]
+tests/test_iot_automation.py::TestThresholdConfiguration::test_custom_threshold_affects_automation PASSED [ 33%]
+tests/test_iot_automation.py::TestAutomationStats::test_get_automation_stats PASSED [ 33%]
+tests/test_iot_automation.py::TestAutomationStats::test_get_automation_history PASSED [ 33%]
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_poor_environment_multiple_automations PASSED [ 34%]
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_optimal_environment_no_automations PASSED [ 34%]
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_environment_analysis_endpoint PASSED [ 34%]
+tests/test_iot_automation.py::TestHealthCheck::test_automation_health_check PASSED [ 35%]
+tests/test_iot_automation.py::test_day_24_all_requirements_met PASSED    [ 35%]
+tests/test_ml_api.py::TestMLClassifyEndpoint::test_classify_urgent_notification PASSED [ 36%]
+tests/test_ml_api.py::TestMLClassifyEndpoint::test_classify_normal_notification PASSED [ 36%]
+tests/test_ml_api.py::TestMLClassifyEndpoint::test_classify_with_timestamp PASSED [ 36%]
+tests/test_ml_api.py::TestMLClassifyEndpoint::test_classify_with_cache_enabled PASSED [ 37%]
+tests/test_ml_api.py::TestMLClassifyEndpoint::test_classify_missing_fields PASSED [ 37%]
+tests/test_ml_api.py::TestMLClassifyEndpoint::test_classify_empty_text PASSED [ 37%]
+tests/test_ml_api.py::TestMLBatchClassifyEndpoint::test_batch_classify_multiple_notifications PASSED [ 38%]
+tests/test_ml_api.py::TestMLBatchClassifyEndpoint::test_batch_classify_with_timestamps PASSED [ 38%]
+tests/test_ml_api.py::TestMLBatchClassifyEndpoint::test_batch_classify_empty_list PASSED [ 38%]
+tests/test_ml_api.py::TestMLBatchClassifyEndpoint::test_batch_classify_large_batch PASSED [ 39%]
+tests/test_ml_api.py::TestMLModelInfoEndpoint::test_get_model_info PASSED [ 39%]
+tests/test_ml_api.py::TestMLPerformanceEndpoint::test_get_performance_stats PASSED [ 40%]
+tests/test_ml_api.py::TestMLCacheEndpoints::test_get_cache_stats PASSED  [ 40%]
+tests/test_ml_api.py::TestMLCacheEndpoints::test_clear_cache PASSED      [ 40%]
+tests/test_ml_api.py::TestMLVersionEndpoints::test_list_versions PASSED  [ 41%]
+tests/test_ml_api.py::TestMLVersionEndpoints::test_reload_model PASSED   [ 41%]
+tests/test_ml_api.py::TestMLHealthEndpoint::test_health_check PASSED     [ 41%]
+tests/test_ml_api.py::TestMLAPIIntegration::test_full_workflow PASSED    [ 42%]
+tests/test_ml_api.py::TestMLAPIIntegration::test_concurrent_predictions PASSED [ 42%]
+tests/test_ml_api.py::TestMLAPIIntegration::test_cache_hit_rate_improvement PASSED [ 42%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_initialization PASSED [ 43%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_set_and_get PASSED [ 43%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_miss PASSED   [ 44%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_ttl_expiration PASSED [ 44%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_max_size_eviction PASSED [ 44%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_clear PASSED  [ 45%]
+tests/test_ml_model_service.py::TestModelCache::test_cache_stats PASSED  [ 45%]
+tests/test_ml_model_service.py::TestModelVersionManager::test_version_manager_initialization PASSED [ 45%]
+tests/test_ml_model_service.py::TestModelVersionManager::test_register_version PASSED [ 46%]
+tests/test_ml_model_service.py::TestModelVersionManager::test_set_current_version PASSED [ 46%]
+tests/test_ml_model_service.py::TestModelVersionManager::test_set_nonexistent_version PASSED [ 46%]
+tests/test_ml_model_service.py::TestModelVersionManager::test_list_versions PASSED [ 47%]
+tests/test_ml_model_service.py::TestModelVersionManager::test_get_version_info PASSED [ 47%]
+tests/test_ml_model_service.py::TestMLModelService::test_service_initialization PASSED [ 48%]
+tests/test_ml_model_service.py::TestMLModelService::test_singleton_pattern PASSED [ 48%]
+tests/test_ml_model_service.py::TestMLModelService::test_classify_notification PASSED [ 48%]
+tests/test_ml_model_service.py::TestMLModelService::test_classify_with_cache PASSED [ 49%]
+tests/test_ml_model_service.py::TestMLModelService::test_batch_classify PASSED [ 49%]
+tests/test_ml_model_service.py::TestMLModelService::test_action_determination PASSED [ 49%]
+tests/test_ml_model_service.py::TestMLModelService::test_reasoning_generation PASSED [ 50%]
+tests/test_ml_model_service.py::TestMLModelService::test_get_model_info PASSED [ 50%]
+tests/test_ml_model_service.py::TestMLModelService::test_performance_stats PASSED [ 50%]
+tests/test_ml_model_service.py::TestMLModelService::test_health_check PASSED [ 51%]
+tests/test_ml_model_service.py::TestMLModelService::test_inference_time_tracking PASSED [ 51%]
+tests/test_ml_model_service.py::TestMLModelService::test_inference_time_limit PASSED [ 52%]
+tests/test_ml_model_service.py::TestMLModelServiceIntegration::test_end_to_end_classification PASSED [ 52%]
+tests/test_ml_model_service.py::TestMLModelServiceIntegration::test_cache_performance_improvement PASSED [ 52%]
+tests/test_ml_model_service.py::TestMLModelServiceIntegration::test_model_performance_sla PASSED [ 53%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_should_bundle_aggressive PASSED [ 53%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_should_not_bundle_critical PASSED [ 53%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_should_not_bundle_calls PASSED [ 54%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_add_to_bundle PASSED [ 54%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_bundle_by_category PASSED [ 54%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_bundle_by_app PASSED [ 55%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_bundle_readiness PASSED [ 55%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_get_bundle PASSED [ 56%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_bundle_summary PASSED [ 56%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_get_ready_bundles PASSED [ 56%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_cleanup_old_bundles PASSED [ 57%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_bundling_statistics PASSED [ 57%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_category_detection PASSED [ 57%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_moderate_strategy PASSED [ 58%]
+tests/test_notification_bundler.py::TestNotificationBundler::test_conservative_strategy PASSED [ 58%]
+tests/test_notification_filter.py::TestNotificationFilter::test_critical_notification_immediate PASSED [ 58%]
+tests/test_notification_filter.py::TestNotificationFilter::test_high_priority_keywords PASSED [ 59%]
+tests/test_notification_filter.py::TestNotificationFilter::test_low_priority_keywords PASSED [ 59%]
+tests/test_notification_filter.py::TestNotificationFilter::test_work_app_during_work_hours PASSED [ 60%]
+tests/test_notification_filter.py::TestNotificationFilter::test_social_app_notification PASSED [ 60%]
+tests/test_notification_filter.py::TestNotificationFilter::test_sleeping_hours_silence PASSED [ 60%]
+tests/test_notification_filter.py::TestNotificationFilter::test_defer_time_calculation PASSED [ 61%]
+tests/test_notification_filter.py::TestNotificationFilter::test_entertainment_during_work PASSED [ 61%]
+tests/test_notification_filter.py::TestNotificationFilter::test_spam_keywords PASSED [ 61%]
+tests/test_notification_filter.py::TestNotificationFilter::test_context_detection PASSED [ 62%]
+tests/test_notification_filter.py::TestNotificationFilter::test_priority_ordering PASSED [ 62%]
+tests/test_notification_filter.py::TestNotificationFilter::test_multiple_notifications PASSED [ 62%]
+tests/test_notification_queue.py::TestNotificationQueue::test_enqueue_immediate PASSED [ 63%]
+tests/test_notification_queue.py::TestNotificationQueue::test_enqueue_priority_ordering PASSED [ 63%]
+tests/test_notification_queue.py::TestNotificationQueue::test_dequeue_multiple PASSED [ 64%]
+tests/test_notification_queue.py::TestNotificationQueue::test_peek_without_removing PASSED [ 64%]
+tests/test_notification_queue.py::TestNotificationQueue::test_batch_delivery PASSED [ 64%]
+tests/test_notification_queue.py::TestNotificationQueue::test_smart_timing PASSED [ 65%]
+tests/test_notification_queue.py::TestNotificationQueue::test_add_to_batch PASSED [ 65%]
+tests/test_notification_queue.py::TestNotificationQueue::test_flush_ready_notifications PASSED [ 65%]
+tests/test_notification_queue.py::TestNotificationQueue::test_cancel_notification PASSED [ 66%]
+tests/test_notification_queue.py::TestNotificationQueue::test_update_priority PASSED [ 66%]
+tests/test_notification_queue.py::TestNotificationQueue::test_queue_statistics PASSED [ 66%]
+tests/test_notification_queue.py::TestNotificationQueue::test_empty_queue PASSED [ 67%]
+tests/test_notification_queue.py::TestNotificationQueue::test_get_all_batches PASSED [ 67%]
+tests/test_notification_queue.py::TestNotificationQueue::test_priority_values PASSED [ 68%]
+tests/test_notifications.py::test_get_notifications PASSED               [ 68%]
+tests/test_notifications.py::test_classify_notification PASSED           [ 68%]
+tests/test_notifications.py::test_batch_notifications PASSED             [ 69%]
+tests/test_notifications.py::test_notification_settings PASSED           [ 69%]
+tests/test_notifications.py::test_mark_notification_read PASSED          [ 69%]
+tests/test_privacy_advanced.py::test_vpn_connect PASSED                  [ 70%]
+tests/test_privacy_advanced.py::test_vpn_status PASSED                   [ 70%]
+tests/test_privacy_advanced.py::test_vpn_disconnect PASSED               [ 70%]
+tests/test_privacy_advanced.py::test_vpn_servers PASSED                  [ 71%]
+tests/test_privacy_advanced.py::test_vpn_recommended_server PASSED       [ 71%]
+tests/test_privacy_advanced.py::test_vpn_kill_switch PASSED              [ 72%]
+tests/test_privacy_advanced.py::test_vpn_leak_detection PASSED           [ 72%]
+tests/test_privacy_advanced.py::test_screen_call PASSED                  [ 72%]
+tests/test_privacy_advanced.py::test_screen_spam_call PASSED             [ 73%]
+tests/test_privacy_advanced.py::test_block_number PASSED                 [ 73%]
+tests/test_privacy_advanced.py::test_unblock_number PASSED               [ 73%]
+tests/test_privacy_advanced.py::test_report_spam PASSED                  [ 74%]
+tests/test_privacy_advanced.py::test_call_history PASSED                 [ 74%]
+tests/test_privacy_advanced.py::test_spam_statistics PASSED              [ 74%]
+tests/test_privacy_advanced.py::test_caller_masking PASSED               [ 75%]
+tests/test_privacy_advanced.py::test_set_location_mode PASSED            [ 75%]
+tests/test_privacy_advanced.py::test_set_real_location PASSED            [ 76%]
+tests/test_privacy_advanced.py::test_set_spoofed_location PASSED         [ 76%]
+tests/test_privacy_advanced.py::test_get_location PASSED                 [ 76%]
+tests/test_privacy_advanced.py::test_select_city_location PASSED         [ 77%]
+tests/test_privacy_advanced.py::test_available_cities PASSED             [ 77%]
+tests/test_privacy_advanced.py::test_location_status PASSED              [ 77%]
+tests/test_privacy_advanced.py::test_location_privacy_verification PASSED [ 78%]
+tests/test_privacy_advanced.py::test_start_monitoring PASSED             [ 78%]
+tests/test_privacy_advanced.py::test_stop_monitoring PASSED              [ 78%]
+tests/test_privacy_advanced.py::test_network_scan PASSED                 [ 79%]
+tests/test_privacy_advanced.py::test_get_threats PASSED                  [ 79%]
+tests/test_privacy_advanced.py::test_threat_statistics PASSED            [ 80%]
+tests/test_privacy_advanced.py::test_block_domain PASSED                 [ 80%]
+tests/test_privacy_advanced.py::test_unblock_domain PASSED               [ 80%]
+tests/test_privacy_advanced.py::test_whitelist_domain PASSED             [ 81%]
+tests/test_privacy_advanced.py::test_check_domain_safety PASSED          [ 81%]
+tests/test_privacy_advanced.py::test_network_statistics PASSED           [ 81%]
+tests/test_privacy_advanced.py::test_security_score PASSED               [ 82%]
+tests/test_privacy_advanced.py::test_firewall_management PASSED          [ 82%]
+tests/test_privacy_advanced.py::test_firewall_status PASSED              [ 82%]
+tests/test_privacy_advanced.py::test_calculate_privacy_score PASSED      [ 83%]
+tests/test_privacy_advanced.py::test_privacy_score_components PASSED     [ 83%]
+tests/test_privacy_advanced.py::test_score_history PASSED                [ 84%]
+tests/test_privacy_advanced.py::test_score_trend PASSED                  [ 84%]
+tests/test_privacy_advanced.py::test_vpn_connect_endpoint PASSED         [ 84%]
+tests/test_privacy_advanced.py::test_vpn_status_endpoint PASSED          [ 85%]
+tests/test_privacy_advanced.py::test_screen_call_endpoint PASSED         [ 85%]
+tests/test_privacy_advanced.py::test_set_location_mode_endpoint PASSED   [ 85%]
+tests/test_privacy_advanced.py::test_network_scan_endpoint PASSED        [ 86%]
+tests/test_privacy_advanced.py::test_privacy_score_endpoint PASSED       [ 86%]
+tests/test_privacy_advanced.py::test_privacy_health_endpoint PASSED      [ 86%]
+tests/test_privacy_flow_integration.py::TestVPNActivationFlow::test_complete_vpn_workflow FAILED [ 87%]
+tests/test_privacy_flow_integration.py::TestVPNActivationFlow::test_vpn_kill_switch_activation PASSED [ 87%]
+tests/test_privacy_flow_integration.py::TestVPNActivationFlow::test_vpn_server_switching PASSED [ 88%]
+tests/test_privacy_flow_integration.py::TestCallerIDMaskingFlow::test_incoming_call_screening_workflow PASSED [ 88%]
+tests/test_privacy_flow_integration.py::TestCallerIDMaskingFlow::test_spam_reporting_workflow FAILED [ 88%]
+tests/test_privacy_flow_integration.py::TestCallerIDMaskingFlow::test_caller_masking_api_workflow PASSED [ 89%]
+tests/test_privacy_flow_integration.py::TestLocationSpoofingFlow::test_location_privacy_workflow PASSED [ 89%]
+tests/test_privacy_flow_integration.py::TestLocationSpoofingFlow::test_city_selection_workflow PASSED [ 89%]
+tests/test_privacy_flow_integration.py::TestLocationSpoofingFlow::test_location_mode_api_workflow PASSED [ 90%]
+tests/test_privacy_flow_integration.py::TestNetworkMonitoringFlow::test_network_monitoring_workflow FAILED [ 90%]
+tests/test_privacy_flow_integration.py::TestNetworkMonitoringFlow::test_domain_management_workflow PASSED [ 90%]
+tests/test_privacy_flow_integration.py::TestNetworkMonitoringFlow::test_firewall_management_workflow PASSED [ 91%]
+tests/test_privacy_flow_integration.py::TestPrivacyScoringFlow::test_privacy_score_calculation_workflow FAILED [ 91%]
+tests/test_privacy_flow_integration.py::TestPrivacyScoringFlow::test_privacy_score_api_workflow PASSED [ 92%]
+tests/test_privacy_flow_integration.py::TestIntegratedPrivacyWorkflow::test_complete_privacy_activation PASSED [ 92%]
+tests/test_privacy_flow_integration.py::TestIntegratedPrivacyWorkflow::test_privacy_workflow_via_api PASSED [ 92%]
+tests/test_privacy_flow_integration.py::TestAutoWipeTrigger::test_untrusted_network_detection PASSED [ 93%]
+tests/test_privacy_flow_integration.py::test_day_23_all_requirements_met PASSED [ 93%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_generate_replies_question PASSED [ 93%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_generate_replies_meeting PASSED [ 94%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_generate_replies_thanks PASSED [ 94%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_generate_replies_urgent PASSED [ 94%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_generate_replies_request PASSED [ 95%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_contextual_replies_driving PASSED [ 95%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_contextual_replies_meeting PASSED [ 96%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_contextual_replies_busy PASSED [ 96%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_reply_confidence_scores PASSED [ 96%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_reply_types PASSED [ 97%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_no_duplicate_suggestions PASSED [ 97%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_limit_suggestions PASSED [ 97%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_classify_reply_type_question PASSED [ 98%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_classify_reply_type_positive PASSED [ 98%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_classify_reply_type_negative PASSED [ 98%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_classify_reply_type_acknowledgment PASSED [ 99%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_pattern_detection PASSED [ 99%]
+tests/test_smart_replies.py::TestSmartReplyGenerator::test_app_specific_suggestions PASSED [100%]
+
+==================================== ERRORS ====================================
+___________ ERROR at setup of TestPerformance.test_api_response_time ___________
+file /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_integration.py, line 503
+      def test_api_response_time(self, headers):
+E       fixture 'headers' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, auth_headers, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_device, sample_notification, sample_sensor_data, sample_user, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_integration.py:503
+___________ ERROR at setup of TestPerformance.test_ml_inference_time ___________
+file /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_integration.py, line 518
+      def test_ml_inference_time(self, headers):
+E       fixture 'headers' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, auth_headers, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, client, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_device, sample_notification, sample_sensor_data, sample_user, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_integration.py:518
+=================================== FAILURES ===================================
+__________ TestNotificationFlow.test_notification_classification_flow __________
+tests/test_integration.py:86: in test_notification_classification_flow
+    assert result["classification"] in ["urgent", "normal", "low_priority"]
+E   AssertionError: assert 'non-urgent' in ['urgent', 'normal', 'low_priority']
+_______ TestNotificationFlow.test_urgent_notification_immediate_display ________
+tests/test_integration.py:120: in test_urgent_notification_immediate_display
+    assert result["classification"] == "urgent"
+E   AssertionError: assert 'non-urgent' == 'urgent'
+E     
+E     - urgent
+E     + non-urgent
+E     ? ++++
+_________ TestNotificationFlow.test_low_priority_notification_batching _________
+tests/test_integration.py:141: in test_low_priority_notification_batching
+    assert result["classification"] in ["low_priority", "normal"]
+E   AssertionError: assert 'non-urgent' in ['low_priority', 'normal']
+_________________ TestFocusModeFlow.test_focus_mode_activation _________________
+tests/test_integration.py:165: in test_focus_mode_activation
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+________________ TestFocusModeFlow.test_focus_mode_app_blocking ________________
+tests/test_integration.py:193: in test_focus_mode_app_blocking
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+_________________ TestFocusModeFlow.test_focus_mode_statistics _________________
+tests/test_integration.py:207: in test_focus_mode_statistics
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+________________ TestFocusModeFlow.test_focus_mode_deactivation ________________
+tests/test_integration.py:230: in test_focus_mode_deactivation
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+________________ TestSensorAlertFlow.test_noise_detection_alert ________________
+tests/test_integration.py:256: in test_noise_detection_alert
+    assert response.status_code == 200
+E   assert 405 == 200
+E    +  where 405 = <Response [405]>.status_code
+_________________ TestSensorAlertFlow.test_poor_lighting_alert _________________
+tests/test_integration.py:281: in test_poor_lighting_alert
+    assert response.status_code == 200
+E   assert 405 == 200
+E    +  where 405 = <Response [405]>.status_code
+_____________ TestSensorAlertFlow.test_prolonged_sitting_detection _____________
+tests/test_integration.py:305: in test_prolonged_sitting_detection
+    assert response.status_code == 200
+E   assert 405 == 200
+E    +  where 405 = <Response [405]>.status_code
+___________ TestSensorAlertFlow.test_uncomfortable_temperature_alert ___________
+tests/test_integration.py:329: in test_uncomfortable_temperature_alert
+    assert response.status_code == 200
+E   assert 405 == 200
+E    +  where 405 = <Response [405]>.status_code
+_____________________ TestPrivacyFlow.test_vpn_activation ______________________
+tests/test_integration.py:354: in test_vpn_activation
+    assert "server" in result
+E   AssertionError: assert 'server' in {'ip_address': '10.8.0.5', 'status': 'enabled', 'vpn_server': 'us-west-1.vpn.example.com'}
+________________ TestPrivacyFlow.test_privacy_score_calculation ________________
+tests/test_integration.py:364: in test_privacy_score_calculation
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+____________________ TestPrivacyFlow.test_tracker_blocking _____________________
+tests/test_integration.py:380: in test_tracker_blocking
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+_______________ TestAnalyticsFlow.test_analytics_dashboard_data ________________
+tests/test_integration.py:399: in test_analytics_dashboard_data
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+_________________ TestAnalyticsFlow.test_productivity_scoring __________________
+tests/test_integration.py:415: in test_productivity_scoring
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+__________ TestRecommendationsFlow.test_personalized_recommendations ___________
+tests/test_integration.py:434: in test_personalized_recommendations
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+_____________ TestRecommendationsFlow.test_recommendation_feedback _____________
+tests/test_integration.py:453: in test_recommendation_feedback
+    rec_id = recs[0]["id"]
+             ^^^^^^^
+E   KeyError: 0
+_____________________ TestSystemHealth.test_backend_health _____________________
+tests/test_integration.py:474: in test_backend_health
+    assert response.status_code == 200
+E   assert 404 == 200
+E    +  where 404 = <Response [404]>.status_code
+__________________ TestSystemHealth.test_all_services_running __________________
+tests/test_integration.py:495: in test_all_services_running
+    assert response.status_code in [200, 401], f"{service_name} not responding"
+E   AssertionError: Backend API not responding
+E   assert 404 in [200, 401]
+E    +  where 404 = <Response [404]>.status_code
+_______________ TestVPNActivationFlow.test_complete_vpn_workflow _______________
+tests/test_privacy_flow_integration.py:52: in test_complete_vpn_workflow
+    assert status["connected_at"] in status
+E   AssertionError: assert '2025-12-29T14:15:11.082746' in {'connected_at': '2025-12-29T14:15:11.082746', 'kill_switch_enabled': False, 'leak_test': {'dns_leak': {'actual_region': 'Netherlands', 'detected': False, 'dns_servers': ['10.8.0.1'], 'expected_region': 'Netherlands'}, 'has_leaks': False, 'ip_leak': {'detected': False, 'real_ip_hidden': True, 'vpn_ip': '185.220.101.42'}, 'timestamp': '2025-12-29T14:15:11.085098', ...}, 'protocol': 'openvpn', ...}
+----------------------------- Captured stderr call -----------------------------
+2025-12-29 14:15:09,077 - httpx - INFO - HTTP Request: GET http://testserver/api/v1/privacy/vpn/servers "HTTP/1.1 200 OK"
+2025-12-29 14:15:09,079 - httpx - INFO - HTTP Request: GET http://testserver/api/v1/privacy/vpn/recommended-server?criteria=fastest "HTTP/1.1 200 OK"
+2025-12-29 14:15:09,080 - app.services.vpn_manager - INFO - Connecting to VPN server: us-east-1 using VPNProtocol.OPENVPN
+2025-12-29 14:15:11,082 - app.services.vpn_manager - INFO - VPN connected successfully to us-east-1
+2025-12-29 14:15:11,083 - httpx - INFO - HTTP Request: POST http://testserver/api/v1/privacy/vpn/connect "HTTP/1.1 200 OK"
+2025-12-29 14:15:11,085 - httpx - INFO - HTTP Request: GET http://testserver/api/v1/privacy/vpn/status "HTTP/1.1 200 OK"
+------------------------------ Captured log call -------------------------------
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/v1/privacy/vpn/servers "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/v1/privacy/vpn/recommended-server?criteria=fastest "HTTP/1.1 200 OK"
+INFO     app.services.vpn_manager:vpn_manager.py:43 Connecting to VPN server: us-east-1 using VPNProtocol.OPENVPN
+INFO     app.services.vpn_manager:vpn_manager.py:58 VPN connected successfully to us-east-1
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/v1/privacy/vpn/connect "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/v1/privacy/vpn/status "HTTP/1.1 200 OK"
+_____________ TestCallerIDMaskingFlow.test_spam_reporting_workflow _____________
+tests/test_privacy_flow_integration.py:157: in test_spam_reporting_workflow
+    assert stats["spam_calls_blocked"] > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'spam_calls_blocked'
+----------------------------- Captured stderr call -----------------------------
+2025-12-29 14:15:18,120 - app.services.caller_masking - INFO - Added +1999888777 to blocklist
+2025-12-29 14:15:18,120 - app.services.caller_masking - INFO - Reported +1999888777 as CallType.TELEMARKETER
+2025-12-29 14:15:18,120 - app.services.caller_masking - INFO - Added +1999888777 to blocklist
+2025-12-29 14:15:18,120 - app.services.caller_masking - INFO - Blocked call from +1999888777
+------------------------------ Captured log call -------------------------------
+INFO     app.services.caller_masking:caller_masking.py:162 Added +1999888777 to blocklist
+INFO     app.services.caller_masking:caller_masking.py:260 Reported +1999888777 as CallType.TELEMARKETER
+INFO     app.services.caller_masking:caller_masking.py:162 Added +1999888777 to blocklist
+INFO     app.services.caller_masking:caller_masking.py:153 Blocked call from +1999888777
+__________ TestNetworkMonitoringFlow.test_network_monitoring_workflow __________
+tests/test_privacy_flow_integration.py:253: in test_network_monitoring_workflow
+    assert "threats_detected" in result
+E   AssertionError: assert 'threats_detected' in {'connections_scanned': 53, 'safe_connections': 53, 'scan_id': 'scan_1767017719', 'suspicious_connections': [], ...}
+----------------------------- Captured stderr call -----------------------------
+2025-12-29 14:15:18,138 - app.services.network_monitor - INFO - Network security monitoring started
+------------------------------ Captured log call -------------------------------
+INFO     app.services.network_monitor:network_monitor.py:49 Network security monitoring started
+________ TestPrivacyScoringFlow.test_privacy_score_calculation_workflow ________
+tests/test_privacy_flow_integration.py:354: in test_privacy_score_calculation_workflow
+    assert "average_score" in trend
+E   AssertionError: assert 'average_score' in {'change': -0.4, 'current_score': 81.9, 'message': 'Your privacy score is stable.', 'previous_score': 82.3, ...}
+----------------------------- Captured stderr call -----------------------------
+2025-12-29 14:15:19,151 - app.services.vpn_manager - INFO - Connecting to VPN server: us-east-1 using VPNProtocol.OPENVPN
+2025-12-29 14:15:21,153 - app.services.vpn_manager - INFO - VPN connected successfully to us-east-1
+2025-12-29 14:15:21,153 - app.services.location_spoofing - INFO - Location mode set to: LocationMode.SPOOFED
+2025-12-29 14:15:21,153 - app.services.network_monitor - INFO - Network security monitoring started
+------------------------------ Captured log call -------------------------------
+INFO     app.services.vpn_manager:vpn_manager.py:43 Connecting to VPN server: us-east-1 using VPNProtocol.OPENVPN
+INFO     app.services.vpn_manager:vpn_manager.py:58 VPN connected successfully to us-east-1
+INFO     app.services.location_spoofing:location_spoofing.py:36 Location mode set to: LocationMode.SPOOFED
+INFO     app.services.network_monitor:network_monitor.py:49 Network security monitoring started
+=============================== warnings summary ===============================
+app/api/notifications.py:89
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/notifications.py:89: DeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+    filter: Optional[str] = Query(None, regex="^(urgent|non-urgent|all)$")
+
+app/api/wellbeing.py:90
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/wellbeing.py:90: DeprecationWarning: `regex` has been deprecated, please use `pattern` instead
+    async def get_wellbeing_stats(period: str = Query("today", regex="^(today|week|month)$")):
+
+tests/test_iot_automation.py: 13 warnings
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/iot_automation.py:53: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    data = sensor_data.dict()
+
+tests/test_iot_automation.py: 13 warnings
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/iot_automation.py:55: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    data['timestamp'] = datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestNoiseDetectionAutomation::test_high_noise_triggers_automation
+tests/test_iot_automation.py::TestNoiseDetectionAutomation::test_critical_noise_high_severity
+tests/test_iot_automation.py::TestThresholdConfiguration::test_custom_threshold_affects_automation
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_poor_environment_multiple_automations
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_environment_analysis_endpoint
+tests/test_iot_automation.py::test_day_24_all_requirements_met
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:107: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py: 17 warnings
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:149: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    current_time = datetime.utcnow()
+
+tests/test_iot_automation.py: 17 warnings
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:362: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'logged_at': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py: 17 warnings
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:86: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'processed_at': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestLightingAdjustmentAutomation::test_low_light_triggers_automation
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_poor_environment_multiple_automations
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_environment_analysis_endpoint
+tests/test_iot_automation.py::test_day_24_all_requirements_met
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:127: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestLightingAdjustmentAutomation::test_excessive_light_triggers_automation
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:143: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestBreakReminderAutomation::test_prolonged_sitting_triggers_break_reminder
+tests/test_iot_automation.py::TestBreakReminderAutomation::test_prolonged_sitting_triggers_break_reminder
+tests/test_iot_automation.py::TestThresholdConfiguration::test_update_thresholds
+tests/test_iot_automation.py::TestThresholdConfiguration::test_custom_threshold_affects_automation
+tests/test_iot_automation.py::TestThresholdConfiguration::test_custom_threshold_affects_automation
+tests/test_iot_automation.py::test_day_24_all_requirements_met
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:344: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'updated_at': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestBreakReminderAutomation::test_prolonged_sitting_triggers_break_reminder
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:175: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_schedule_focus_mode
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_iot_automation.py:239: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    future_time = (datetime.utcnow() + timedelta(minutes=30)).isoformat()
+
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_schedule_focus_mode
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_schedule_focus_mode_api
+tests/test_iot_automation.py::test_day_24_all_requirements_met
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:248: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'created_at': datetime.utcnow().isoformat(),
+
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_schedule_focus_mode_api
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_iot_automation.py:260: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    future_time = (datetime.utcnow() + timedelta(hours=1)).isoformat()
+
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_activate_focus_mode_immediately
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_activate_focus_mode_api
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:262: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'activated_at': datetime.utcnow().isoformat(),
+
+tests/test_iot_automation.py::TestScheduledFocusModeAutomation::test_activate_focus_mode_api
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:261: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'session_id': session_id or f"focus_{int(datetime.utcnow().timestamp())}",
+
+tests/test_iot_automation.py::TestTemperatureAutomation::test_low_temperature_triggers_alert
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:199: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestTemperatureAutomation::test_high_temperature_triggers_alert
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_poor_environment_multiple_automations
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/services/iot_automation.py:215: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::TestThresholdConfiguration::test_update_thresholds
+tests/test_iot_automation.py::test_day_24_all_requirements_met
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/iot_automation.py:135: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    thresholds = {k: v for k, v in config.dict().items() if v is not None}
+
+tests/test_iot_automation.py::TestIntegratedAutomationWorkflow::test_environment_analysis_endpoint
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/iot_automation.py:71: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    data = sensor_data.dict()
+
+tests/test_iot_automation.py::TestHealthCheck::test_automation_health_check
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/app/api/iot_automation.py:200: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_iot_automation.py::test_day_24_all_requirements_met
+  /workspaces/Privacy-Focused-Context-Aware-Digital-Wellbeing-System/backend-api/tests/test_iot_automation.py:521: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    future_time = (datetime.utcnow() + timedelta(hours=1)).isoformat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_integration.py::TestNotificationFlow::test_notification_classification_flow
+FAILED tests/test_integration.py::TestNotificationFlow::test_urgent_notification_immediate_display
+FAILED tests/test_integration.py::TestNotificationFlow::test_low_priority_notification_batching
+FAILED tests/test_integration.py::TestFocusModeFlow::test_focus_mode_activation
+FAILED tests/test_integration.py::TestFocusModeFlow::test_focus_mode_app_blocking
+FAILED tests/test_integration.py::TestFocusModeFlow::test_focus_mode_statistics
+FAILED tests/test_integration.py::TestFocusModeFlow::test_focus_mode_deactivation
+FAILED tests/test_integration.py::TestSensorAlertFlow::test_noise_detection_alert
+FAILED tests/test_integration.py::TestSensorAlertFlow::test_poor_lighting_alert
+FAILED tests/test_integration.py::TestSensorAlertFlow::test_prolonged_sitting_detection
+FAILED tests/test_integration.py::TestSensorAlertFlow::test_uncomfortable_temperature_alert
+FAILED tests/test_integration.py::TestPrivacyFlow::test_vpn_activation - Asse...
+FAILED tests/test_integration.py::TestPrivacyFlow::test_privacy_score_calculation
+FAILED tests/test_integration.py::TestPrivacyFlow::test_tracker_blocking - as...
+FAILED tests/test_integration.py::TestAnalyticsFlow::test_analytics_dashboard_data
+FAILED tests/test_integration.py::TestAnalyticsFlow::test_productivity_scoring
+FAILED tests/test_integration.py::TestRecommendationsFlow::test_personalized_recommendations
+FAILED tests/test_integration.py::TestRecommendationsFlow::test_recommendation_feedback
+FAILED tests/test_integration.py::TestSystemHealth::test_backend_health - ass...
+FAILED tests/test_integration.py::TestSystemHealth::test_all_services_running
+FAILED tests/test_privacy_flow_integration.py::TestVPNActivationFlow::test_complete_vpn_workflow
+FAILED tests/test_privacy_flow_integration.py::TestCallerIDMaskingFlow::test_spam_reporting_workflow
+FAILED tests/test_privacy_flow_integration.py::TestNetworkMonitoringFlow::test_network_monitoring_workflow
+FAILED tests/test_privacy_flow_integration.py::TestPrivacyScoringFlow::test_privacy_score_calculation_workflow
+ERROR tests/test_integration.py::TestPerformance::test_api_response_time
+ERROR tests/test_integration.py::TestPerformance::test_ml_inference_time
+====== 24 failed, 249 passed, 113 warnings, 2 errors in 62.48s (0:01:02) =======

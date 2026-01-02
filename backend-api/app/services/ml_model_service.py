@@ -232,7 +232,7 @@ class MLModelService:
                 self.metadata = {
                     'version': version,
                     'model_type': 'RandomForestClassifier',
-                    'classes': ['non-urgent', 'urgent']
+                    'classes': ['normal', 'urgent']
                 }
             
             self.loaded_version = version
@@ -293,11 +293,11 @@ class MLModelService:
             confidence = float(max(probabilities))
             
             result = {
-                'classification': 'urgent' if is_urgent else 'non-urgent',
+                'classification': 'urgent' if is_urgent else 'normal',
                 'is_urgent': is_urgent,
                 'confidence': confidence,
                 'probabilities': {
-                    'non_urgent': float(probabilities[0]),
+                    'normal': float(probabilities[0]),
                     'urgent': float(probabilities[1])
                 },
                 'action': self._determine_action(is_urgent, confidence),

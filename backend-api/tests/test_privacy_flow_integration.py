@@ -149,7 +149,7 @@ class TestCallerIDMaskingFlow:
         
         # Step 3: Screen the same number again (should detect as spam)
         result = await caller_masking.screen_call(spam_number, "Telemarketer")
-        assert result["action"] == "block"
+        assert result["is_spam"] is True
         assert result["risk_score"] > 50
         
         # Step 4: Verify it's in spam database
@@ -167,7 +167,7 @@ class TestCallerIDMaskingFlow:
         assert response.status_code == 200
         
         # Masking is service-level feature (no separate enable/disable API)
-        assert "risk_score" in response.json()
+        assert response.json()["masking_enabled"] is False
 
 
 class TestLocationSpoofingFlow:
@@ -258,7 +258,7 @@ class TestNetworkMonitoringFlow:
         
         # Step 4: Block a malicious domain
         result = await network_monitor.block_domain("malicious-site.com", "Threat detected")
-        assert result["status"] == "blocked"
+        assert result["blocked"] is True
         
         # Step 5: Check domain safety
         result = await network_monitor.check_domain_safety("google.com")
@@ -286,7 +286,7 @@ class TestNetworkMonitoringFlow:
         
         # Step 3: Unblock a domain
         result = await network_monitor.unblock_domain("ads-tracker.com")
-        assert result["status"] == "unblocked"
+        assert result["blocked"] is False
         
         # Step 4: Check network statistics
         stats = await network_monitor.get_network_statistics()
@@ -416,9 +416,9 @@ class TestIntegratedPrivacyWorkflow:
         
         # Step 7: Verify each component is active
         components = privacy_result["component_scores"]
-        assert components["vpn"]["score"] > 50
-        assert components["location_privacy"]["score"] > 50
-        assert components["network_security"]["score"] > 50
+        assert components["vpn_score"] > 50
+        assert components["location_score"] > 50
+        assert components["network_score"] > 50
         
         # Cleanup
         await vpn_manager.disconnect()

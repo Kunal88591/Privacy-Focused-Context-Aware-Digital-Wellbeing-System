@@ -87,7 +87,7 @@ async def get_focus_mode_status():
     return focus_mode_state
 
 @router.get("/stats", response_model=WellbeingStats)
-async def get_wellbeing_stats(period: str = Query("today", regex="^(today|week|month)$")):
+async def get_wellbeing_stats(period: str = Query("today", pattern="^(today|week|month)$")):
     """Get productivity and wellbeing statistics"""
     
     data = stats_data.get(period, stats_data["today"])

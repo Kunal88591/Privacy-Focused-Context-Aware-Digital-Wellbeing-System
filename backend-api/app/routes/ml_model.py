@@ -87,7 +87,7 @@ class VersionSwitch(BaseModel):
 @router.post("/classify", response_model=ClassifyResponse)
 async def classify_notification(request: ClassifyRequest):
     """
-    Classify a single notification as urgent or non-urgent
+    Classify a single notification as urgent or normal
     
     **Features:**
     - ML-powered classification
@@ -97,7 +97,7 @@ async def classify_notification(request: ClassifyRequest):
     - Sub-100ms inference time
     
     **Returns:**
-    - Classification (urgent/non-urgent)
+    - Classification (urgent/normal)
     - Confidence score (0-1)
     - Recommended action
     - Human-readable reasoning

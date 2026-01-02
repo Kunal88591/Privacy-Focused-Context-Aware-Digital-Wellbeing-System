@@ -370,7 +370,7 @@ class RecommendationEngine:
             recommendations.append({
                 'type': 'notification_control',
                 'title': 'Too Many Notifications',
-                'description': f"You received {notif_data['total_count']} notifications today. Mute non-urgent apps?",
+                'description': f"You received {notif_data['total_count']} notifications today. Mute normal apps?",
                 'action': 'review_notification_settings',
                 'action_data': {},
                 'priority': 80,

@@ -18,7 +18,7 @@ class NotificationClassify(BaseModel):
     received_at: datetime
 
 class ClassificationResponse(BaseModel):
-    classification: str  # "urgent" or "non-urgent"
+    classification: str  # "urgent" or "normal"
     confidence: float
     action: str  # "show_immediately", "batch", "block"
     reasoning: str
@@ -40,27 +40,24 @@ notifications_db = []
 @router.post("/classify", response_model=ClassificationResponse)
 async def classify_notification(notification: NotificationClassify):
     """
-    Classify a notification as urgent or non-urgent using ML model
+    Classify a notification as urgent or normal using ML model
     """
     
     # Simple rule-based classification (replace with ML model)
     text_lower = notification.text.lower()
-    
     # Check for urgent keywords
     urgent_keywords = ["urgent", "asap", "emergency", "critical", "alert", "deadline", "important"]
     is_urgent = any(keyword in text_lower for keyword in urgent_keywords)
-    
     # Check for time-sensitive phrases
     time_phrases = ["starts in", "due in", "expires in", "meeting in"]
     has_time_sensitivity = any(phrase in text_lower for phrase in time_phrases)
-    
     if is_urgent or has_time_sensitivity:
         classification = "urgent"
         confidence = 0.85 + random.uniform(0, 0.15)
         action = "show_immediately"
         reasoning = "Contains urgent keywords or time-sensitive information"
     else:
-        classification = "non-urgent"
+        classification = "normal"
         confidence = 0.70 + random.uniform(0, 0.20)
         action = "batch"
         reasoning = "Standard notification without urgency indicators"
@@ -86,7 +83,7 @@ async def classify_notification(notification: NotificationClassify):
 async def get_notifications(
     limit: int = Query(50, ge=1, le=100),
     offset: int = Query(0, ge=0),
-    filter: Optional[str] = Query(None, regex="^(urgent|non-urgent|all)$")
+    filter: Optional[str] = Query(None, pattern="^(urgent|normal|all)$")
 ):
     """
     Get user's notification history with pagination and filtering
